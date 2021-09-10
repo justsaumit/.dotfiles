@@ -1,0 +1,28 @@
+set sandbox none
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+
+map j scroll half-down
+map k scroll half-up
+#map D toggle_page_mode
+map r reload
+map R rotate
+
+map J zoom in
+map K zoom out
+#map u =
+
+map H page down
+map L page up
+
+#access index w tab
+#colon tab for options
+#colon number to land on page no or nG
+#map p print
+
+map i recolor
+map gg goto top
+map G goto bottom
+
+set selection-clipboard clipboard
