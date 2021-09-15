@@ -15,6 +15,11 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
+#export PS1="[\u@\h ~]\\$\[$(tput sgr0)\]"
+#export PS1="\[$(tput bold)\]\[$(tput setaf 3)\][\[$(tput setaf 1)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 3)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
 
 #auto cd 
 ## Allows you to cd into directory merely by typing the directory name.
@@ -23,7 +28,8 @@ shopt -s autocd
 #vi mode in bash (uncomment after expertise)
 #set -o vi
 
-
+#Solana path env 13-9-21
+export PATH="/home/saumit/.local/share/solana/install/active_release/bin:$PATH"
 
 
 #infinite history
@@ -45,6 +51,7 @@ alias scr="ffmpeg -f x11grab -i :0.0 out.mp4"
 alias ss="maim --select | tee ~/Pictures/Screenshots/pic-full-$(date '+%Y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png"
 alias pas="pulseaudio --start"
 alias pak="pulseaudio --kill"
+alias pm="pulsemixer"
 alias sp="spotify"
 alias b="brave"
 alias br="brightnessctl set "
@@ -52,4 +59,6 @@ alias rs="redshift -P -O"
 alias prime="prime-run " #hardware acceleration needed? command "$ prime [name of program]"
 alias st="cd st"
 alias dwm="cd dwm"
-alias yt="ytfzf"
+alias yt="ytfzf -t"
+alias ytm="ytfzf -ml"
+alias leaf="leafpad"
