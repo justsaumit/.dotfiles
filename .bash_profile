@@ -15,6 +15,11 @@ export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
+//export HABITICA_TOKEN=" "
+//export HABITICA_UUID=" "
+
+
+
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
