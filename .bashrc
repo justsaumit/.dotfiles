@@ -44,6 +44,7 @@ alias v="vim"
 alias sv="sudo vim"
 alias r="ranger"
 alias sr="sudo ranger"
+alias space="ncdu"
 alias mkd="mkdir -v"
 alias rmd="rmdir -v"
 #git
