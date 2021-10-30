@@ -13,12 +13,13 @@
 #neofetch small
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+#PS1='[\u@\h \W]\$ '
 
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 #export PS1="[\u@\h ~]\\$\[$(tput sgr0)\]"
-#export PS1="\[$(tput bold)\]\[$(tput setaf 3)\][\[$(tput setaf 1)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 3)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
+#susexport PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 6)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 
 #auto cd 
@@ -35,7 +36,10 @@ export PATH="/home/saumit/.local/share/solana/install/active_release/bin:$PATH"
 #infinite history
 HISTSIZE= HISTFILESIZE= 
 #timecodes in bash history :))
-HISTTIMEFORMAT="%d/%m/%y %T "
+#HISTTIMEFORMAT="%d/%m/%y %T "
+HISTTIMEFORMAT="%F %T"
+#ignore dupes
+HISTCONTROL=ignoredups
 
 #Some aliases
 alias t="teams"
@@ -45,12 +49,15 @@ alias sv="sudo vim"
 alias r="ranger"
 alias sr="sudo ranger"
 alias space="ncdu"
+alias c='clear'
+alias h='history'
 alias mkd="mkdir -v"
 alias rmd="rmdir -v"
 #git
 alias gc="git commit"
 alias gd="git diff"
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+
 alias jds="export _JAVA_AWT_WM_NONREPARENTING=1"
 alias jd="jdownloader"
 alias scr="ffmpeg -f x11grab -i :0.0 out.mp4"
@@ -59,19 +66,28 @@ alias pas="pulseaudio --start"
 alias pak="pulseaudio --kill"
 alias pm="pulsemixer"
 alias sp="spotify"
+
 alias b="brave"
 alias bb="brave --incognito"
 alias bbb="brave --tor"
 alias hab="brave habitica.com"
 alias toggl="brave track.toggl.com/timer"
+alias ff="librewolf"
 alias br="brightnessctl set "
 alias rs="redshift -P -O"
-alias prime="prime-run " #hardware acceleration needed? command "$ prime [name of program]"
+alias prime="prime-run " #enable hardware acceleration
 alias st="cd st"
 alias dwm="cd dwm"
+alias setntp="timedatectl set-ntp true"
+alias rm="trash"
+#alias listdel ="cd /home/saumit/.local/share/Trash && ls"
+alias listdel ="trash-list"
+alias restore ="trash-restore"
+alias selempty = "trash-rm"
+alias empty="sudo rm -rf /home/saumit/.local/share/Trash/files"
 alias yt="ytfzf -t"
 alias ytm="ytfzf -ml"
 alias ytq="ytfzf -faH"
 alias leaf="notepadqq"
-alias setntp="timedatectl set-ntp true"
+alias qb="qbittorrent"
 alias q="exit"
