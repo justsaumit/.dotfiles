@@ -51,6 +51,7 @@ alias sr="sudo ranger"
 alias space="ncdu"
 alias c='clear'
 alias h='history'
+
 alias mkd="mkdir -v"
 alias rmd="rmdir -v"
 #git
@@ -72,6 +73,7 @@ alias bb="brave --incognito"
 alias bbb="brave --tor"
 alias hab="brave habitica.com"
 alias toggl="brave track.toggl.com/timer"
+
 alias ff="librewolf"
 alias br="brightnessctl set "
 alias rs="redshift -P -O"
@@ -81,9 +83,9 @@ alias dwm="cd dwm"
 alias setntp="timedatectl set-ntp true"
 alias rm="trash"
 #alias listdel ="cd /home/saumit/.local/share/Trash && ls"
-alias listdel ="trash-list"
-alias restore ="trash-restore"
-alias selempty = "trash-rm"
+alias listdel="trash-list"
+alias restore="trash -restore"
+alias selempty="trash-rm"
 alias empty="sudo rm -rf /home/saumit/.local/share/Trash/files"
 alias yt="ytfzf -t"
 alias ytm="ytfzf -ml"
