@@ -29,6 +29,10 @@ shopt -s autocd
 #vi mode in bash (uncomment after expertise)
 #set -o vi
 
+#Ctrl+D EOF Signal will work on billionth press
+export IGNOREEOF=1000000000
+set -o ignoreeof
+
 #Solana path env 13-9-21
 export PATH="/home/saumit/.local/share/solana/install/active_release/bin:$PATH"
 
