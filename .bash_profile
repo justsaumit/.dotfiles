@@ -33,5 +33,4 @@ fi
 
 #Switch escape and Caps Lock 
 #sudo -n loadkeys ~/.scripts/ttymaps.kmap 2>/dev/null
-
-
+setxbmap -option caps:escape
