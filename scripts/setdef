@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xwallpaper --clear
+xrdb -remove
+xdotool key super+ctrl+shift+q
