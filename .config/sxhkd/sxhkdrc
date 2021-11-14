@@ -33,6 +33,17 @@ super + ctrl + q
 	brave --incognito
 super + alt + q
 	brave --tor
+# Launch wa
+super + shift + w
+	whatsapp-nativefier
+
+# Launch teams
+super + shift + t
+	teams
+	
+# Launch spotify 
+super + shift + m
+	sp
 
 # Launch password manager
 #super + p
