@@ -9,6 +9,6 @@ wal -n -i $wall >/dev/null
 #sed -i  $HOME/.cache/wal/colors-wol-dwm.h 
 #echo "Recompiling dwm w new colors..."
 echo "dwm reading Xresources color values at runtime"
-xdottool key super+F5
+xdotool key super+F5
 #(cd $HOME/.local/src/dwm && sudo make clean install>/dev/null) 
 echo "^_^ Enjoy your new look!!!"
