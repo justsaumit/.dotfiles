@@ -43,8 +43,11 @@ super + shift + t
 	
 # Launch spotify 
 super + shift + m
-	sp
+	spotify
 
+# Launch discord
+super + shift + d
+	discord
 # Launch password manager
 #super + p
 $dmenu drop down
@@ -68,5 +71,5 @@ Print
 
 # Take a screenshot (sel)
 alt + Print
-	maim -D --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+agy-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+	maim -D --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
