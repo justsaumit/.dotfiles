@@ -20,7 +20,7 @@ Personal Arch Linux dot files
 
 ## License
 Since dwm, st and other suckless tools come under
-[MIT](https://choosealicense.com/licenses/mit/) License, this repo also comes under MIT License. If it were my own setup, made from scratch I'd probably one of the GPL Licenses.
+[MIT](https://choosealicense.com/licenses/mit/) License, this repo also comes under MIT License. If it were my own setup, made from scratch I'd probably one use one of the GPL Licenses.
 
 
 
