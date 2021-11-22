@@ -3,28 +3,28 @@
 
 # <file system> <dir> <type> <options> <dump> <pass>
 # /dev/sda3
-UUID=2a07c5fa-66d8-48cb-9d57-82e657caae1c	/         	ext4      	rw,relatime	0 1
+UUID=3af5e8fa-6c80-4a71-b4de-4cf25d778f2f	/         	ext4      	rw,relatime	0 1
 
 # /dev/sda1
-UUID=2799-B0D2      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+UUID=3328-8416      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
 
 # /dev/sda4
 UUID=082cb0b3-cba2-4b7f-b3c4-64eb8562cf5a	/home     	ext4      	rw,relatime	0 2
 
 # /dev/sda2
-UUID=4b369da6-a854-42ef-aafd-645ad70a661d	none      	swap      	defaults  	0 0
+UUID=1b617654-7267-44bc-9922-5da33e21e458	none      	swap      	defaults  	0 0
 
 #/dev/nvme0n1p3: LABEL="Windows"
-UUID=AC3C49C23C498872				/mnt/C		ntfs		defaults	0 0
+UUID=AC3C49C23C498872                           /home/C          ntfs            defaults        0 0
 
 #/dev/nvme0n1p4: LABEL="New Volume"
-UUID=32B8F885B8F848BD				/mnt/D		ntfs		defaults	0 0
+UUID=32B8F885B8F848BD                           /home/D          ntfs            defaults        0 0
 
 #/dev/nvme0n1p5: LABEL="Esotericism"
-UUID=5E0CD5800CD5541D				/mnt/E		ntfs		defaults	0 0
+UUID=5E0CD5800CD5541D                           /home/E          ntfs            defaults        0 0
 
 #/dev/nvme0n1p6: LABEL="FIRE"
-UUID=8496166896165B4E				/mnt/F		ntfs		defaults	0 0
+UUID=8496166896165B4E                           /home/F          ntfs            defaults        0 0
 
 #/dev/nvme0n1p7: LABEL="GOGGINS"
-UUID=7090D7C490D78ECA				/mnt/G		ntfs		defaults	0 0
+UUID=7090D7C490D78ECA                           /home/G          ntfs            defaults        0 0
