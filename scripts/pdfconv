@@ -1,1 +1,3 @@
-find . -type f -iname "*.docx" -exec soffice --headless --convert-to pdf {} +
+#!/bin/sh
+find . -type f -iname "*.*" -exec soffice --headless --convert-to pdf {} + &&
+pdfunite *.pdf output.pdf
