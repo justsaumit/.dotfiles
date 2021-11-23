@@ -2,4 +2,4 @@
 #To retuen dwm and st to their default vanilla state
 xwallpaper --clear
 xrdb -remove
-xdotool key super+ctrl+shift+q
+xdotool key super+shift+q
