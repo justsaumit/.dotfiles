@@ -1,5 +1,28 @@
-#!/bin/sh
+//doesnt work improve in future
 
-vpnid=$(nmcli con | grep "vpn" | cut -d " " -f 1 | dmenu -p "Select VPN to activate/deactivate")
-actdeact=$(echo "" | dmenu -p "Activate or Deactivate? (up or down)")
-nmcli con $actdeact id $vpnid
+#!/bin/sh
+echo "Choose a country...1)US 2)NL 3)JP"
+country=("US" "NL" "JP")
+select chosen in "${country[@]}"; do
+        case $chosen in
+                "US")
+                  echo "Choosing Fastest Virtualized Private American server"
+                  usvpn=$(find /etc/openvpn/client/ -type f | shuf -n 1)
+                  sudo openvpn /etc/openvpn/client/$usvpn
+                  break
+                  ;;
+                "NL")
+                  echo "Choosing Fastest Virtualized Private NewZealand's server"
+                  nlvpn=$(find /etc/openvpn/client/nl -type f | shuf -n 1)
+                  sudo openvpn --config /etc/openvpn/client/$nlvpn
+                  break
+                  ;;
+                "JP")
+                  echo "Choosing Fastest Virtualized Private Japanese server"
+                  jpvpn=$(find /etc/openvpn/client/jp -type f | shuf -n 1)
+                  sudo openvpn --config /etc/openvpn/client/$jpvpn
+                  break
+                ;;
+                 *) echo "invalid option $REPLY";;
+    esac
+done
