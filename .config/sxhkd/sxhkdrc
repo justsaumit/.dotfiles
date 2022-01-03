@@ -22,6 +22,25 @@ XF86Audio{Raise,Lower}Volume
 #super + shift + {k,j}
 #    pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%
 
+
+# Toggle play/pause in spotify (universal)
+
+#super + ctrl + space
+#super + ;
+#dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+# Change spotify volume only
+#super + ctrl + {Up,Down}
+#super + {',/}
+#spotifyvol{inc,dec}.py
+
+# Change tracks spotify only
+
+#super + ctrl {Left,Right}
+#super + {,,.}
+#dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.{Previous,Next}
+
+
 ################
 # Applications #
 ################
@@ -43,25 +62,35 @@ super + shift + t
 	
 # Launch spotify 
 super + shift + m
-	spotify
+	LD_PRELOAD=/usr/local/lib/spotify
 
 # Launch discord
 super + shift + d
 	discord
 # Launch password manager
 #super + p
-$dmenu drop down
+#$dmenu drop down
 
+# dmenu wifi-menu
+super + ctrl + w
+	wifi-menu
+
+# dmenu vpn-menu
+super + ctrl + v
+	vpn-menu
 #dmenu kill
 #super + shift + w
 
 #lock
-#super+ shift +l
+super+ shift +l
+	betterlockscreen --lock dimblur
+super+ ctrl + l
+	betterlockscr
 #
 
 # Change screen brightness
 XF86MonBrightness{Up,Down}
-    xbacklight -{inc,dec} 5
+    brillo -s intel_backlight -{A,U} 5
 
 # Change screen temp
 
@@ -71,5 +100,4 @@ Print
 
 # Take a screenshot (sel)
 alt + Print
-	maim -D --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
-
+	maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
