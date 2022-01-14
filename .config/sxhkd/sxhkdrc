@@ -52,9 +52,18 @@ super + ctrl + q
 	brave --incognito
 super + alt + q
 	brave --tor
+
 # Launch wa
 super + shift + w
 	whatsapp-nativefier
+
+# Launch ranger
+super + r
+	exec $TERMINAL ranger
+
+# Launch outlook
+super + e 
+	b https://outlook.office365.com/mail/inbox
 
 # Launch teams
 super + shift + t
@@ -101,3 +110,4 @@ Print
 # Take a screenshot (sel)
 alt + Print
 	maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+
