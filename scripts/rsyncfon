@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Welcome to rsyncfon a fon to pc rsync script"
+echo "Welcome to rsyncfon a fon to pc and vice-versa file-syncing script using the rsync algorithm!"
 echo -e "What would you like to do?\r\n1)sync from phone to pc 2)sync from pc to phone "
 read option
 case "$option" in
