@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo "Welcome to rsyncfon a fon to pc rsync script"
+echo -e "What would you like to do?\r\n1)sync from phone to pc 2)sync from pc to phone "
+read option
+case "$option" in
+	"1")
+		echo -e "Enter public IP on mobile device (starting with 192.): \r\n!Make sure the device and the desktop are connected to the same network!"
+		read IP
+		echo "Enter file/folder to be rsync'd (Leave empty if entire sdcard) (/sdcard/*)"
+		read file
+		echo "Enter desination path on PC \r\n!!!Make sure to check whether it had sufficient space or not!!!"
+		read dest
+		rsync --update --progress -e 'ssh -p 2222' -azv $IP:/sdcard/$file $dest;;
+	"2")
+		echo "Enter file/folder from pc to be rsync'd"
+		read file
+		echo "Enter public IP"
+		read IP
+		echo "Enter destination location( /sdcard/*)"
+		read dest
+		rsync --update --progress -e 'ssh -p 2222' -azv $file root@$IP:$dest
+esac
+

@@ -1,0 +1,4 @@
+bluetoothctl power on
+bluetoothctl connect A1:B3:EC:B1:53:60
+bluetoothctl connect A1:B3:EC:B1:53:60
+
