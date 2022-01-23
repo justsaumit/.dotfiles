@@ -2,7 +2,7 @@
 
 echo "Chosing a random wallpaper..."
 wall=$(find $HOME/Pictures/Wallpaper/w/wow -type f | shuf -n 1)
-echo "Setting up the wallpaper" 
+echo "Setting up the wallpaper: $(echo $wall|cut -d '/' -f 8)" 
 xwallpaper --zoom $wall
 echo "Generating pywal color schemes..."
 wal -n -i $wall >/dev/null 
@@ -10,5 +10,6 @@ wal -n -i $wall >/dev/null
 #echo "Recompiling dwm w new colors..."
 echo "dwm reading Xresources color values at runtime"
 xdotool key super+F5
+pywal-discord
 #(cd $HOME/.local/src/dwm && sudo make clean install>/dev/null) 
 echo "^_^ Enjoy your new look!!!"
