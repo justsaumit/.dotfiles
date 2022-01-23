@@ -30,12 +30,11 @@ shopt -s autocd
 #set -o vi
 
 #Ctrl+D EOF Signal will work on billionth press
-export IGNOREEOF=1000000000
+#export IGNOREEOF=1000000000
 set -o ignoreeof
 
 #Solana path env 13-9-21
-export PATH="/home/saumit/.local/share/solana/install/active_release/bin:$PATH"
-
+export PATH="$PATH:/home/saumit/.local/share/solana/install/active_release/bin"
 
 #infinite history
 HISTSIZE= HISTFILESIZE= 
@@ -46,7 +45,7 @@ HISTTIMEFORMAT="%F %T"
 HISTCONTROL=ignoredups
 
 #Some aliases
-alias t="teams"
+alias te="teams"
 alias w="whatsapp-nativefier"
 alias v="vim"
 alias sv="sudo vim"
@@ -55,9 +54,13 @@ alias sr="sudo ranger"
 alias space="ncdu"
 alias c='clear'
 alias h='history'
+alias sha="shasum -a 256"
+alias untar="tar -zxvf"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias mkd="mkdir -pv" #make a parent and sub directory
+alias myip="curl ipinfo.io/ip && echo """
 
-alias mkd="mkdir -v"
-alias rmd="rmdir -v"
 #git
 alias gc="git commit"
 alias gd="git diff"
@@ -65,8 +68,10 @@ alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold g
 
 alias jds="export _JAVA_AWT_WM_NONREPARENTING=1"
 alias jd="jdownloader"
+alias polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 alias scr="ffmpeg -f x11grab -i :0.0 out.mp4"
-alias ss="maim -D --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png"
+alias ss="maim -D --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+agy-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+maim --select | tee ~/Pictures/Screenshots/pic-full-$(date '+%Y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png"
 alias pas="pulseaudio --start"
 alias pak="pulseaudio --kill"
 alias pm="pulsemixer"
@@ -82,16 +87,18 @@ alias github="brave https://github.com/Saumit-D"
 alias ff="librewolf"
 alias br="brightnessctl set "
 alias rs="redshift -P -O"
+alias t="tuxi"
 alias prime="prime-run " #enable hardware acceleration
-alias st="cd st"
+#alias st="cd st"
 alias dwm="cd dwm"
 alias setntp="timedatectl set-ntp true"
 alias rm="trash"
 #alias listdel ="cd /home/saumit/.local/share/Trash && ls"
 alias listdel="trash-list"
-alias restore="trash -restore"
-alias selempty="trash-rm"
-alias empty="sudo rm -rf /home/saumit/.local/share/Trash/files"
+alias restore="trash-restore"
+alias empty="trash-empty"
+alias permadel="sudo rm -rf $(find $HOME -type d | dmenu -p "File to be permadeleted:" -l 15)"
+
 alias yt="ytfzf -t"
 alias ytm="ytfzf -ml"
 alias ytq="ytfzf -faH"
