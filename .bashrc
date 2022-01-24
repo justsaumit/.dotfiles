@@ -97,7 +97,6 @@ alias rm="trash"
 alias listdel="trash-list"
 alias restore="trash-restore"
 alias empty="trash-empty"
-alias permadel="sudo rm -rf $(find $HOME -type d | dmenu -p "File to be permadeleted:" -l 15)"
 
 alias yt="ytfzf -t"
 alias ytm="ytfzf -ml"
