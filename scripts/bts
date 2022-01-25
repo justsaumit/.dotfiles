@@ -1,6 +1,6 @@
 status=$(systemctl status bluetooth | grep active | cut -d " " -f 7)
 case $status in
-  "active") 
+  	"active") 
 		bluetoothctl power on
 		bluetoothctl connect A1:B3:EC:B1:53:60 ;;
 	"inactive")
