@@ -10,13 +10,13 @@
 
 
 export PATH="$PATH:$HOME/.scripts"
-#your $PATH env variable is a list of all your directories from which you can run commands without giving the whole location 
+#your $PATH env variable is a list of all your directories from which you can run commands without giving the whole location
 export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
-//export HABITICA_TOKEN=" "
-//export HABITICA_UUID=" "
+#export HABITICA_TOKEN=" "
+#export HABITICA_UUID=" "
 
 
 
@@ -28,9 +28,3 @@ export READER="zathura"
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 		exec startx
 fi
-
-
-
-#Switch escape and Caps Lock 
-#sudo -n loadkeys ~/.scripts/ttymaps.kmap 2>/dev/null
-setxbmap -option caps:escape
