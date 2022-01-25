@@ -4,6 +4,7 @@ dunst &
 sxhkd &
 setbg &
 picom --experimental-backends &
+unclutter &
 dwmblocks &
 exec dwm 
 
