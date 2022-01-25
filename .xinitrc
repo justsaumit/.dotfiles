@@ -2,6 +2,7 @@
 
 dunst &
 sxhkd &
+setbg &
 picom --experimental-backends &
 dwmblocks &
 exec dwm 
