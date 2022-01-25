@@ -1,4 +1,10 @@
-bluetoothctl power on
-bluetoothctl connect A1:B3:EC:B1:53:60
-bluetoothctl connect A1:B3:EC:B1:53:60
-
+status=$(systemctl status bluetooth | grep active | cut -d " " -f 7)
+case $status in
+  "active") 
+		bluetoothctl power on
+		bluetoothctl connect A1:B3:EC:B1:53:60 ;;
+	"inactive")
+		sudo systemctl start bluetooth
+		bluetoothctl power on
+		bluetoothctl connect A1:B3:EC:B1:53:60;;
+esac
