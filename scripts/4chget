@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "Welcome to 4chan web/image scrapping script"
-#echo -e "What would you like to do?\r\n1)sync from phone to pc 2)sync from pc to phone "
+echo "Welcome to imageboard web/image scrapping script"
 echo "Is it wallpaper/general (wg) or anime wallpaper (w)?"
 read option
 echo "Enter folder name:"
