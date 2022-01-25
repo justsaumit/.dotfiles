@@ -33,8 +33,7 @@ shopt -s autocd
 #export IGNOREEOF=1000000000
 set -o ignoreeof
 
-#Solana path env 13-9-21
-export PATH="$PATH:/home/saumit/.local/share/solana/install/active_release/bin"
+export PATH="$PATH:$HOME/.scripts"
 
 #infinite history
 HISTSIZE= HISTFILESIZE= 
