@@ -1,9 +1,9 @@
-status=$(systemctl status bluetooth | grep active | cut -d " " -f 7)
+status=$(systemctl status bluetooth | grep Active | cut -d " " -f 7)
 case $status in
-  	"active") 
+	"active") 
 		bluetoothctl power on
 		bluetoothctl connect A1:B3:EC:B1:53:60 ;;
-	"inactive")
+	"inactive" | "failed")
 		sudo systemctl start bluetooth
 		bluetoothctl power on
 		bluetoothctl connect A1:B3:EC:B1:53:60;;
