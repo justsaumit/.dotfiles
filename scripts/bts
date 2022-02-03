@@ -4,7 +4,7 @@ case $status in
 		bluetoothctl power on
 		bluetoothctl connect A1:B3:EC:B1:53:60 ;;
 	"inactive" | "failed")
-		sudo systemctl start bluetooth
+		st -e sudo systemctl start bluetooth
 		bluetoothctl power on
 		bluetoothctl connect A1:B3:EC:B1:53:60;;
 esac
