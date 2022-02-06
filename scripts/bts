@@ -3,7 +3,8 @@ status=$(systemctl status bluetooth | grep Active | cut -d " " -f 7)
 case $status in
       	"active") 
 		bluetoothctl power on
-		bluetoothctl connect A1:B3:EC:B1:53:60 ;;
+		bluetoothctl connect A1:B3:EC:B1:53:60 
+		notify-send "Bluetooth Device is connected";;
 	"inactive" | "failed")
 		SUDO_ASKPASS=.scripts/dpass sudo -A $(sudo systemctl start bluetooth|dmenu)
 		#st -e sudo systemctl start bluetooth
