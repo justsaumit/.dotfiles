@@ -95,7 +95,7 @@ alias rm="trash"
 alias listdel="trash-list"
 alias restore="trash-restore"
 alias empty="trash-empty"
-alias serch="sudo -A find / -type f -o -type d | dmenu -i -p 'Directories/Files to search:' -l 15 | sed 's/^/'/;s/$/'/' xclip -sel c"
+alias serch="sudo -A find / -type f -o -type d | dmenu -i -p 'Directories/Files to search:' -l 15 | awk '{printf("\"%s\"\n", $0);}' | xclip -sel c"
 
 alias yt="ytfzf -t"
 alias ytm="ytfzf -ml"
