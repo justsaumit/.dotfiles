@@ -34,6 +34,7 @@ shopt -s autocd
 set -o ignoreeof
 
 export PATH="$PATH:$HOME/.scripts"
+export SUDO_ASKPASS='/home/saumit/.scripts/dpass'
 
 #infinite history
 HISTSIZE= HISTFILESIZE= 
@@ -44,7 +45,7 @@ HISTTIMEFORMAT="%F %T"
 HISTCONTROL=ignoredups
 
 #Some aliases
-alias te="teams"
+alias t="teams"
 alias w="whatsapp-nativefier"
 alias v="vim"
 alias sv="sudo vim"
@@ -52,7 +53,7 @@ alias r="ranger"
 alias sr="sudo ranger"
 alias space="ncdu"
 alias c='clear'
-alias h='history'
+alias h='cat ~/.bash_history|fzf|xclip -sel c'
 alias sha="shasum -a 256"
 alias untar="tar -zxvf"
 alias cp="cp -iv"
@@ -69,8 +70,7 @@ alias jds="export _JAVA_AWT_WM_NONREPARENTING=1"
 alias jd="jdownloader"
 alias polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 alias scr="ffmpeg -f x11grab -i :0.0 out.mp4"
-alias ss="maim -D --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+agy-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
-maim --select | tee ~/Pictures/Screenshots/pic-full-$(date '+%Y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png"
+alias ss="maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png"
 alias pas="pulseaudio --start"
 alias pak="pulseaudio --kill"
 alias pm="pulsemixer"
@@ -81,12 +81,11 @@ alias bb="brave --incognito"
 alias bbb="brave --tor"
 alias hab="brave habitica.com"
 alias toggl="brave track.toggl.com/timer"
-alias github="brave https://github.com/Saumit-D"
+alias github="brave https://github.com/justsaumit"
 
 alias ff="librewolf"
 alias br="brightnessctl set "
 alias rs="redshift -P -O"
-alias t="tuxi"
 alias prime="prime-run " #enable hardware acceleration
 #alias st="cd st"
 alias dwm="cd dwm"
@@ -96,6 +95,7 @@ alias rm="trash"
 alias listdel="trash-list"
 alias restore="trash-restore"
 alias empty="trash-empty"
+alias serch="sudo find / -type f -o -type d | dmenu -i -p 'Directories/Files to search:' -l 15 | xclip -sel c"
 
 alias yt="ytfzf -t"
 alias ytm="ytfzf -ml"
