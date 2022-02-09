@@ -6,7 +6,8 @@ case $status in
 		bluetoothctl connect A1:B3:EC:B1:53:60 
 		notify-send "Bluetooth Device is connected";;
 	"inactive" | "failed")
-		SUDO_ASKPASS=.scripts/dpass sudo -A $(sudo systemctl start bluetooth|dmenu)
+		export SUDO_ASKPASS=/home/saumit/.scripts/dpass
+		sudo -A systemctl start bluetooth
 		#st -e sudo systemctl start bluetooth
 		notify-send "Bluetooth daemon is running"
 		bluetoothctl power on
