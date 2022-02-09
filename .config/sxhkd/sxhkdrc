@@ -63,7 +63,7 @@ super + r
 
 # Launch outlook
 super + e 
-	b https://outlook.office365.com/mail/inbox
+	brave https://outlook.office365.com/mail/inbox
 
 # Launch teams
 super + shift + t
@@ -76,9 +76,18 @@ super + shift + m
 # Launch discord
 super + shift + d
 	discord
-# Launch password manager
-#super + p
-#$dmenu drop down
+
+# dmenu custom run
+super + d
+	dmenu_run -hp setbg,xkill,librewolf
+
+#dmenu emoji-picker (universal)
+super + F1
+      emojisel
+
+#dmenu emoji-picker (active-window)
+super + F2
+      emojiselw
 
 # dmenu wifi-menu
 super + ctrl + w
@@ -87,19 +96,22 @@ super + ctrl + w
 # dmenu vpn-menu
 super + ctrl + v
 	vpn-menu
-#dmenu kill
-#super + shift + w
 
-#lock
+#dmenu kill
+super + alt + w
+	xkill
+
+#screenlock
+#loads cached lockscreen (instant)
 super+ shift +l
 	betterlockscreen --lock dimblur
+#generates a new lockscreen (takes time)
 super+ ctrl + l
 	betterlockscr
-#
 
 # Change screen brightness
 XF86MonBrightness{Up,Down}
-    brillo -s intel_backlight -{A,U} 5
+    brillo -s intel_backlight  -{A,U} 5
 
 # Change screen temp
 
@@ -110,4 +122,18 @@ Print
 # Take a screenshot (sel)
 alt + Print
 	maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+
+
+##############################
+#d-menu binary Yes/No Prompts#
+##############################
+
+#Prompt Yes/No for dwm hot reboot
+exec prompt "Do you want to hot reboot dwm?" 
+
+#Prompt Yes/No to completely exit dwm/Xorg
+
+#Prompt Yes/No for shutdown
+
+	mod + shift + x
 
