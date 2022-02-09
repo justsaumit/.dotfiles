@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sudo -A find / -type f -o -type d | 
+dmenu -i -p 'Directories/Files to search:' -l 15 | 
+awk '{printf("\"%s\"\n", $0);}' | 
+xclip -sel c
+
