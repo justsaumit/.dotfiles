@@ -23,22 +23,23 @@ XF86Audio{Raise,Lower}Volume
 #    pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%
 
 
-# Toggle play/pause in spotify (universal)
+#Toggle play/pause in spotify (universal)
 
-#super + ctrl + space
+#super + F4
+#playerctl -p spotify play-pause
 #super + ;
 #dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 # Change spotify volume only
 #super + ctrl + {Up,Down}
-#super + {',/}
+#playerctl -p spotify volume 
+#super + {F3,F5}
 #spotifyvol{inc,dec}.py
 
 # Change tracks spotify only
 
 #super + ctrl {Left,Right}
-#super + {,,.}
-#dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.{Previous,Next}
+#playerctl -p spotify {previous,next}
 
 
 ################
@@ -55,19 +56,23 @@ super + alt + q
 
 # Launch wa
 super + shift + w
-	whatsapp-nativefier
+   	whatsapp-nativefier
 
 # Launch ranger
 super + r
-	exec $TERMINAL ranger
+   	exec $TERMINAL ranger
+
+#Launch <go,h,bash>top
+super + shift {g,h,b}
+   	exec $TERMINAL {go,h,bash}top
 
 # Launch outlook
-super + e 
-	brave https://outlook.office365.com/mail/inbox
+#super + e 
+#	brave https://outlook.office365.com/mail/inbox
 
 # Launch teams
 super + shift + t
-	teams
+	teams -no-sandbox
 	
 # Launch spotify 
 super + shift + m
@@ -79,7 +84,7 @@ super + shift + d
 
 # dmenu custom run
 super + d
-	dmenu_run -hp setbg,xkill,librewolf
+	dmenu_run -hp setbg,xkill,librewolf,telegram-desktop,bts,trashy,dmount,dumount
 
 #dmenu emoji-picker (universal)
 super + F1
@@ -123,17 +128,20 @@ Print
 alt + Print
 	maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
-
+ctrl + Print
+	flameshot gui
 ##############################
 #d-menu binary Yes/No Prompts#
 ##############################
 
 #Prompt Yes/No for dwm hot reboot
-exec prompt "Do you want to hot reboot dwm?" 
+super + shift + q
+    prompt "Do you want to hot reboot dwm?" 'xdotool key alt+shift+q'
 
 #Prompt Yes/No to completely exit dwm/Xorg
 
 #Prompt Yes/No for shutdown
-
-	mod + shift + x
-
+super + shift + x
+    prompt "Do you want to shutdown?" 'shutdown now'
+alt + shift + x
+    prompt "Do you want to reboot?" 'reboot'
