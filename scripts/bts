@@ -3,14 +3,17 @@ status=$(systemctl status bluetooth | grep Active | cut -d " " -f 7)
 case $status in
       	"active") 
 		bluetoothctl power on
-		bluetoothctl connect A1:B3:EC:B1:53:60 
-		notify-send "Bluetooth Device is connected";;
-	"inactive" | "failed")
+		bluetoothctl connect A1:B3:EC:B1:53:60 && sleep 5 &&
+        	pmstat=$(pactl list | grep "Active Profile" | sed '2p;d' | cut -d ' ' -f 3)
+                [ "$pmstat" = ("a2dp_sink" || "handsfree_head_unit") ] && notify-send "Bluetooth Device is connected"|| notify-send "Unable to connect! Check whether the bluetooth device is switched on.";;
+	    
+        "inactive" | "failed")
 		export SUDO_ASKPASS=/home/saumit/.scripts/dpass
 		sudo -A systemctl start bluetooth
-		#st -e sudo systemctl start bluetooth
+		#st -e sudo systemctl start bluetooth &&
 		notify-send "Bluetooth daemon is running"
 		bluetoothctl power on
-		bluetoothctl connect A1:B3:EC:B1:53:60
-		notify-send "Bluetooth Device is connected";;
+		bluetoothctl connect A1:B3:EC:B1:53:60 &&
+        	pmstat=$(pactl list | grep "Active Profile" | sed '2p;d' | cut -d ' ' -f 3)
+        	[ "$pmstat" = "a2dp_sink" ] && notify-send "Bluetooth Device is connected" || notify-send "Unable to connect! Check whether the bluetooth device is switched on.";;
 esac
