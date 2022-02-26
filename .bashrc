@@ -34,7 +34,7 @@ shopt -s autocd
 set -o ignoreeof
 
 export PATH="$PATH:$HOME/.scripts"
-export SUDO_ASKPASS='/home/saumit/.scripts/dpass'
+export SUDO_ASKPASS="$HOME/.scripts/dpass"
 
 #infinite history
 HISTSIZE= HISTFILESIZE= 
@@ -60,6 +60,7 @@ alias cp="cp -iv"
 alias mv="mv -iv"
 alias mkd="mkdir -pv" #make a parent and sub directory
 alias myip="curl ipinfo.io/ip && echo """
+alias neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt"
 
 #git
 alias gc="git commit"
@@ -76,6 +77,8 @@ alias pak="pulseaudio --kill"
 alias pm="pulsemixer"
 alias sp="spotify"
 
+alias ssha="echo 'ssh-keygen -t ed25519 -a 100 -f ~/.ssh/<Identityfile> -C <comment>'"
+
 alias b="brave"
 alias bb="brave --incognito"
 alias bbb="brave --tor"
@@ -89,15 +92,12 @@ alias rs="redshift -P -O"
 alias prime="prime-run " #enable hardware acceleration
 #alias st="cd st"
 alias dwm="cd dwm"
-alias setntp="timedatectl set-ntp true"
 alias rm="trash"
-#alias listdel ="cd /home/saumit/.local/share/Trash && ls"
 alias listdel="trash-list"
 alias restore="trash-restore"
 alias empty="trash-empty"
 
 alias yt="ytfzf -t"
-alias ytm="ytfzf -ml"
 alias ytq="ytfzf -faH"
 alias leaf="notepadqq"
 alias qb="qbittorrent"
