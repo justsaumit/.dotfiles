@@ -1,0 +1,9 @@
+#!/bin/sh
+# A dmenu binary prompt script
+# Gives dmenu prompt labeled with $1 to perform command $2
+# For example:
+# './promptquit "Do you really want to quit?" "shutdown -h now"'
+
+[ $(echo -e "No\nYes" | dmenu -i -p "$1") \
+	== "Yes" ] && $2
+

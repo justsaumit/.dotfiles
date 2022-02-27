@@ -1,5 +1,5 @@
 #!/bin/sh
 
 vpnid=$(nmcli con | grep "vpn" | cut -d " " -f 1 | dmenu -p "Select VPN to activate/deactivate")
-actdeact=$(echo "" | dmenu -p "Activate or Deactivate? (up or down)")
+actdeact=$(echo -e "up\ndown" | dmenu -p "Activate or Deactivate? (up or down)")
 nmcli con $actdeact id $vpnid

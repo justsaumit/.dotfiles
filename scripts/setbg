@@ -6,10 +6,9 @@ echo "Setting up the wallpaper: $(echo $wall|cut -d '/' -f 8)"
 xwallpaper --zoom $wall
 echo "Generating pywal color schemes..."
 wal -n -i $wall >/dev/null 
-#sed -i  $HOME/.cache/wal/colors-wol-dwm.h 
-#echo "Recompiling dwm w new colors..."
 echo "dwm reading Xresources color values at runtime"
 xdotool key super+F5
 pywal-discord
+$HOME/.local/usr/wal-telegram/wal-telegram
 #(cd $HOME/.local/src/dwm && sudo make clean install>/dev/null) 
 echo "^_^ Enjoy your new look!!!"
