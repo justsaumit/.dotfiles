@@ -1,0 +1,5 @@
+#!/bin/sh
+
+trashfiledir=$(find $HOME -type f -o -type d | dmenu -i -p "File to be deleted:" -l 15| awk '{printf('\"%s\"\n', $0);}')
+
+trash-put $trashfiledir

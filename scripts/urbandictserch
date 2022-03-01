@@ -1,0 +1,15 @@
+#!/bin/sh
+
+search=$(echo "" | dmenu -p 'Urban Dictionary:'|sed 's/ /%20/g')
+
+curl -s "https://api.urbandictionary.com/v0/define?term={$search}" | jq '.' | grep --color=always definition | awk 'BEGIN {RS="definition"; ORS=""} {print $0""++i}' > /tmp/urban-dic
+
+n=$(wc -l < /tmp/urban-dic)
+touch /tmp/urban-dic.txt && > /tmp/urban-dic.txt
+
+for i in $(eval echo {1..$n}p)
+do
+    sed -n $i /tmp/urban-dic|sed -r "s/\x1B\[[0-9;]*[a-zA-Z]//g" >> /tmp/urban-dic.txt
+done
+cat /tmp/urban-dic.txt | dmenu -l $n -p "$1"i
+
