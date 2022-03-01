@@ -10,5 +10,8 @@ echo "dwm reading Xresources color values at runtime"
 xdotool key super+F5
 pywal-discord
 $HOME/.local/usr/wal-telegram/wal-telegram
+ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
+pkill dunst
+dunst &
 #(cd $HOME/.local/src/dwm && sudo make clean install>/dev/null) 
 echo "^_^ Enjoy your new look!!!"
