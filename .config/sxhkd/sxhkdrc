@@ -26,7 +26,7 @@ XF86Audio{Raise,Lower}Volume
 #Toggle play/pause in spotify (universal)
 
 #super + F4
-#playerctl -p spotify play-pause
+#    playerctl -p spotify play-pause
 #super + ;
 #dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
@@ -56,15 +56,15 @@ super + alt + q
 
 # Launch wa
 super + shift + w
-   	whatsapp-nativefier
+   whatsapp-nativefier
 
 # Launch ranger
 super + r
-   	exec $TERMINAL ranger
+   exec $TERMINAL ranger
 
 #Launch <go,h,bash>top
 super + shift {g,h,b}
-   	exec $TERMINAL {go,h,bash}top
+   exec $TERMINAL {go,h,bash}top
 
 # Launch outlook
 #super + e 
@@ -116,7 +116,8 @@ super+ ctrl + l
 
 # Change screen brightness
 XF86MonBrightness{Up,Down}
-    brillo -s intel_backlight  -{A,U} 5
+    brillo -s intel_backlight  -{A,U} 5  && dunstify -u normal -t 3000 -r 90210 -i display-brightness "$(printf %.0f%% $( brillo -G) )"
+
 
 # Change screen temp
 
