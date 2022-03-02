@@ -30,7 +30,7 @@
 
     # Font and typography settings
     font = Monospace 14
-    alignment = leftr
+    alignment = left
     word_wrap = yes
 
     # Format for how notifications will be displayed
