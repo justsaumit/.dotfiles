@@ -1,4 +1,4 @@
-$!/bin/sh
+#!/bin/sh
 ##pid=$(ps -a | grep dwm | awk '{print $1}')
 pid=$(pidof dwm)
 kill -HUP $pid
