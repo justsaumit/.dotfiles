@@ -14,13 +14,9 @@
 
 alias ls='ls --color=auto'
 #PS1='[\u@\h \W]\$ '
-
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-
 #export PS1="[\u@\h ~]\\$\[$(tput sgr0)\]"
-
 #susexport PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 6)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-
 
 #auto cd 
 ## Allows you to cd into directory merely by typing the directory name.
@@ -34,7 +30,9 @@ shopt -s autocd
 set -o ignoreeof
 
 export PATH="$PATH:$HOME/.scripts"
-export SUDO_ASKPASS="$HOME/.scripts/dpass"
+# Adds `~/.local/bin` to $PATH
+export PATH="$PATH:$HOME/.local/bin"
+export SUDO_ASKPASS="$HOME/.local/bin/dpass"
 
 #infinite history
 HISTSIZE= HISTFILESIZE= 
@@ -63,8 +61,10 @@ alias myip="curl ipinfo.io/ip && echo """
 alias neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt"
 
 #git
-alias gc="git commit"
-alias gd="git diff"
+alias g1="git add ."
+alias g2="git commit -m"
+alias g3="git push origin HEAD --force"
+alias gs="git status"
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 alias jds="export _JAVA_AWT_WM_NONREPARENTING=1"
