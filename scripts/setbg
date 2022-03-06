@@ -1,11 +1,17 @@
 #!/bin/sh
 
-echo "Chosing a random wallpaper..."
-wall=$(find $HOME/Pictures/Wallpaper/w/wow -type f | shuf -n 1)
-echo "Setting up the wallpaper: $(echo $wall|cut -d '/' -f 8)" 
-xwallpaper --zoom $wall
+if [ -z "$1" ]; then
+    echo "Chosing a random wallpaper..."
+    wall=$(find $HOME/Pictures/Wallpaper/w/wow -type f | shuf -n 1)
+    echo "Setting up the wallpaper: $(echo $wall|cut -d '/' -f 8)" 
+else
+    wall="$1"    
+fi
+
+echo "Setting up the wallpaper: $(echo $wall)" 
+xwallpaper --zoom $wall &&
 echo "Generating pywal color schemes..."
-wal -n -i $wall >/dev/null 
+wal -n -i $wall >/dev/null &&
 echo "dwm reading Xresources color values at runtime"
 xdotool key super+F5
 pywal-discord

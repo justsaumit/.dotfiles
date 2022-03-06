@@ -2,4 +2,6 @@
 #To retuen dwm and st to their default vanilla state
 xwallpaper --clear
 xrdb -remove
-xdotool key super+shift+q
+xdotool key alt+shift+q
+sleep 5
+picom --experimental-backends

@@ -3,59 +3,57 @@
 #some aliases for launching applications
 alias \
         b="brave"
-        bb="brave --incognito"
-        bbb="brave --tor"
-        github="brave https://github.com/justsaumit"
-        ff="librewolf"
-        v="vim"
-        sv="sudo vim"
-        r="ranger"
-        sr="sudo ranger"
-        t="teams -no-sandbox"
-        w="whatsapp-nativefier"
-        space="ncdu"
-        sp=spotify
-        jds="export _JAVA_AWT_WM_NONREPARENTING=1"
-        jd="jdownloader"
-        yt="ytfzf -t"
-        ytq="ytfzf -faH"
-        leaf="notepadqq"
-        qb="qbittorrent"
+        bb="brave --incognito" \
+        bbb="brave --tor" \
+        github="brave https://github.com/justsaumit" \
+        ff="librewolf" \
+        v="vim" \
+        sv="sudo vim" \
+        r="ranger" \
+        sr="sudo ranger" \
+        t="teams -no-sandbox" \
+        w="whatsapp-nativefier" \
+        sp="spotify" \
+        jds="export _JAVA_AWT_WM_NONREPARENTING=1" \
+        jd="jdownloader" \
+        yt="ytfzf -t" \
+        ytq="ytfzf -faH" \
+        leaf="notepadqq" \
+        qb="qbittorrent" \
+        polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 #git
 alias \
-       g1="git add ."
-       g2="git commit -S -m"
-       g3="git push origin HEAD --force"
+       g1="git add ." \
+       g2="git commit -S -m" \
+       g3="git push origin HEAD --force" \
        glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 #useful command substitutions
 alias \
-        c='clear'
-        h='cat ~/.bash_history|fzf|xclip -sel c'
-        sha="shasum -a 256"
-        untar="tar -zxvf"
-        cp="cp -iv"
-        mv="mv -iv"
-        mkd="mkdir -pv" #make a parent and sub directory
-        myip="curl ipinfo.io/ip && echo """
-        neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt"
-        polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-        scr="ffmpeg -f x11grab -i :0.0 out.mp4"
-        ss="maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png"
-        pas="pulseaudio --start"
-        pak="pulseaudio --kill"
-        pm="pulsemixer"
-        ssha="echo 'ssh-keygen -t ed25519 -a 100 -f ~/.ssh/<Identityfile> -C <comment>'"
-        br="brightnessctl set "
-        rs="redshift -P -O"
-        prime="prime-run " #enable hardware acceleration
-        st="cd .local/src/st"
-        dwm="cd .local/src/dwm"
-        rm="trash"
-        listdel="trash-list"
-        restore="trash-restore"
-        empty="trash-empty"
+        space="ncdu" \
+        h='cat ~/.bash_history|fzf|xclip -sel c' \
+        sha="shasum -a 256" \
+        untar="tar -zxvf" \
+        untar2="tar xvf" \
+        cp="cp -iv" \
+        mv="mv -iv" \
+        mkd="mkdir -pv" \ #make a parent and sub directory 
+        myip="curl ipinfo.io/ip && echo """ \
+        neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt" \
+        scr="ffmpeg -f x11grab -i :0.0 out.mp4" \
+        ss="maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png" \
+        pas="pulseaudio --start" \
+        pak="pulseaudio --kill" \
+        pm="pulsemixer" \
+        ssha="echo 'ssh-keygen -t ed25519 -a 100 -f ~/.ssh/<Identityfile> -C <comment>'" \
+        br="brightnessctl set " \
+        rs="redshift -P -O" \
+        prime="prime-run " \ #enable hardware acceleration
+        st="cd .local/src/st" \
+        dwm="cd .local/src/dwm" \
+        rm="trash" \
+        listdel="trash-list" \
+        restore="trash-restore" \
+        empty="trash-empty" \
         q="exit"
-
-
