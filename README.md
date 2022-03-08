@@ -12,7 +12,7 @@ Personal Arch Linux dot files
 7. Very important to replace the standard "libxft" with "libxft-bgra-git" for color emoji support and to avoid crash on login.
 8. necessary programs/dependencies for the scripts to work that aren't install by default: pamixer, xwallpaper, pywal, xdottool
 9. sxhkd: xorg-backlight needs xf86-video-intel to function else would crash and logout.
-10. fstab: requires ntfs-3g
+10. <del>fstab: requires ntfs-3g</del>
 
 
 
