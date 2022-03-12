@@ -8,28 +8,24 @@ case $option in
       	    "active") 
         	bluetoothctl power on
             bluetoothctl connect $MAC && sleep 2 && [ $(bluetoothctl info $MAC|grep "Connected"|awk -F'[:][ ]' '/^[^#]/{print $2}') == "yes" ] && notify-send "Connected" "Bluetooth Device is connected" ||  notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";;
-            #pmstat=$(pactl list | grep "Active Profile" | sed '2p;d' | cut -d ' ' -f 3) &&
-            #[ -n "$pmstat" ] && notify-send "Connected" "Bluetooth Device is connected" || notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";;
 	    
             "inactive" | "failed")
-		    export SUDO_ASKPASS=/home/saumit/.scripts/dpass
     		sudo -A systemctl start bluetooth
 	    	#st -e sudo systemctl start bluetooth &&
 		    notify-send "Bluetooth daemon is running"
 		    bluetoothctl power on
-		    bluetoothctl connect $MAC && sleep 1 && [ $(bluetoothctl info $MAC|grep "Connected"|awk -F'[:][ ]' '/^[^#]/{print $2}') == "yes" ] && notify-send "Connected" "Bluetooth Device is connected" ||  notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";
-            #pmstat=$(pactl list | grep "Active Profile" | sed '2p;d' | cut -d ' ' -f 3)
-            #[ -n "$pmstat" ] && notify-send "Connected" "Bluetooth Device is connected" 
-        esac;;     
+		    bluetoothctl connect $MAC && sleep 1 && [ $(bluetoothctl info $MAC|grep "Connected"|awk -F'[:][ ]' '/^[^#]/{print $2}') == "yes" ] && notify-send "Connected" "Bluetooth Device is disconnected" ||  notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";
+            esac;;     
 
     "Disconnect")
             bluetoothctl power off && sudo -A systemctl stop bluetooth
             notify-send "Disconnected" "Bluetooth Device is connected" || notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";;
 
     "Change profile")
+        past_profile=$(pactl list | grep "Active Profile" | sed '2p;d' | cut -d ' ' -f 3)
         profile=$(echo -e "a2dp_sink(pure audio output)\nhandsfree_head_unit(inferior audio output + mic enable)" | dmenu -p "Choose the profile for your sound card")
         cardindex=$(pacmd list-cards | grep 'index' | awk 'NR==2' | cut -d ' ' -f6)
-        past_profile=$(echo "$pmstat")
+
         case $profile in
             "a2dp_sink(pure audio output)")
                 pactl set-card-profile $cardindex a2dp_sink &&

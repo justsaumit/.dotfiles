@@ -76,15 +76,19 @@ super + shift + t
 	
 # Launch spotify 
 super + shift + m
-	LD_PRELOAD=/usr/local/lib/spotify
+	spotify
 
 # Launch discord
 super + shift + d
 	discord
 
+# Launch telegram
+super + ctrl + t
+	telegram-desktop
+
 # dmenu custom run
 super + d
-	dmenu_run -hp setbg,xkill,librewolf,telegram-desktop,bts,trashy,dmount,dumount
+	dmenu_run -hp setbg,xkill,pidkill,librewolf,telegram-desktop,bts,trashy,dmount,dumount,picomm,passmenu
 
 #dmenu emoji-picker (universal)
 super + F1
@@ -93,6 +97,10 @@ super + F1
 #dmenu emoji-picker (active-window)
 super + F2
       emojiselw
+
+#dmenu pidkill
+super + F3
+      pidkill
 
 # dmenu wifi-menu
 super + ctrl + w
@@ -118,7 +126,6 @@ super+ ctrl + l
 XF86MonBrightness{Up,Down}
     brillo -s intel_backlight  -{A,U} 5  && dunstify -u normal -t 3000 -r 90210 -i display-brightness "$(printf %.0f%% $( brillo -G) )"
 
-
 # Change screen temp
 
 # Take a screenshot (full)
@@ -127,10 +134,12 @@ Print
 
 # Take a screenshot (sel)
 alt + Print
-	maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+##  maim --window $(xdotool getactivewindow) | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -sel c -t image/png
+	maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -sel c -t image/png
 
 ctrl + Print
 	flameshot gui
+
 ##############################
 #d-menu binary Yes/No Prompts#
 ##############################

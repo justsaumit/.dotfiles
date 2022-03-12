@@ -21,6 +21,9 @@ map L page up
 #colon number to land on page no or nG
 #map p print
 
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
 map i recolor
 map gg goto top
 map G goto bottom

@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Default Applications
-export EDITOR="vim"
+export EDITOR="nvim"
 export READER="zathura"
 export TERMINAL="st"
 export BROWSER="brave"

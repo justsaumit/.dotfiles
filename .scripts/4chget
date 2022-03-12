@@ -1,12 +1,17 @@
 #!/bin/bash
 
-option=$(echo -e "wg\nw" | dmenu -p "Is it wallpaper/general (wg) or anime wallpaper (w)?")
-thread=$(echo "" | dmenu -p "Enter thread no.: (#######)")
-dir=$echo "" | dmenu -p "Enter folder name")
+echo "Welcome to 4chan web/image scrapping script"
+#echo -e "What would you like to do?\r\n1)sync from phone to pc 2)sync from pc to phone "
+echo "Is it wallpaper/general (wg) or anime wallpaper (w)?"
+read option
+echo "Enter folder name:"
+read dir
+echo "Enter thread no.: (#######)"
+read thread
 if [[ $option = w ]] ; then
- 	mkdir -p /home/saumit/Pictures/Wallpaper/4chget/w/$dir
+ 	mkdir -p /home/$USER/Pictures/Wallpaper/4chget/w/$dir
 else
-	mkdir -p /home/saumit/Pictures/Wallpaper/4chget/wg/$dir
+	mkdir -p /home/$USER/Pictures/Wallpaper/4chget/wg/$dir
 fi
 
 case "$option" in
@@ -16,3 +21,4 @@ case "$option" in
 	"w")
 		wget -P Pictures/Wallpaper/4chget/w/$dir -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4channel.org/w/thread/$thread ;;
 esac
+
