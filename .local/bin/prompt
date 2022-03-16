@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 # A dmenu binary prompt script
 # Gives dmenu prompt labeled with $1 to perform command $2
 # For example:
