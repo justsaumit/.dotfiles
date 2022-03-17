@@ -9,6 +9,7 @@ alias \
         ff="librewolf" \
         v="nvim" \
         sv="sudo nvim" \
+        vim="nvim" \
         r="ranger" \
         sr="sudo ranger" \
         t="teams -no-sandbox" \
@@ -56,6 +57,7 @@ alias \
         st="cd .local/src/st" \
         dwm="cd .local/src/dwm" \
         dwmblocks="cd .local/src/dwmblocks" \
+        calc="quich"
         rm="trash" \
         listdel="trash-list" \
         restore="trash-restore" \
