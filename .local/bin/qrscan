@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    echo "Enter a valid image with QR code"
+else
+    Link=$(zbarimg -q $1 | cut -b 1-8 --complement) &&
+    echo $Link | xclip -sel c
+    notify-send "QR Link copied to clipboard" "$Link"
+fi

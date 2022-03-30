@@ -1,13 +1,11 @@
-#!/bin/sh
-
 #!/usr/bin/env bash
 
 shopt -s nullglob globstar
 
 typeit=0
 if [[ $1 == "--type" ]]; then
-        typeit=1
-            shift
+	typeit=1
+	shift
 fi
 
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
@@ -21,12 +19,12 @@ password=$(printf '%s\n' "${password_files[@]}" | dmenu "$@")
 
 pass_cmd=show
 if pass show "$password" | grep -q '^otpauth://'; then
-        pass_cmd=otp
+    pass_cmd=otp
 fi
 
 if [[ $typeit -eq 0 ]]; then
-        pass $pass_cmd -c "$password" 2>/dev/null
-    else
-            pass $pass_cmd "$password" | { IFS= read -r pass; printf %s "$pass"; } |
-                        xdotool type --clearmodifiers --file -
+	pass $pass_cmd -c "$password" 2>/dev/null
+else
+	pass $pass_cmd "$password" | { IFS= read -r pass; printf %s "$pass"; } |
+		xdotool type --clearmodifiers --file -
 fi

@@ -38,7 +38,6 @@ alias \
         sha="shasum -a 256" \
         untar="tar -zxvf" \
         untar2="tar xvf" \
-        qrscan="xargs -I {} zbarimg -q {} | cut -b 1-8 --complement | xclip -sel c" \
         cp="cp -iv" \
         mv="mv -iv" \
         mkd="mkdir -pv" #make a parent and sub directory
