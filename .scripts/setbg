@@ -2,7 +2,7 @@
 
 if [ -z "$1" ]; then
     echo "Chosing a random wallpaper..."
-    wall=$(find $HOME/Pictures/Wallpaper/w/wow -type f | shuf -n 1)
+    wall=$(find $HOME/pix/Wallpaper/w/wow -type f | shuf -n 1)
     echo "Setting up the wallpaper: $(echo $wall|cut -d '/' -f 8)" 
 else
     wall="$1"    

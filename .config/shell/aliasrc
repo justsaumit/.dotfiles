@@ -29,7 +29,7 @@ alias \
        g2="git commit -S -m" \
        g3="git push origin HEAD --force" \
        gs="git status" \
-       gc="git diff --staged" \
+       gd="git diff --staged" \
        glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 #useful command line substitutions
@@ -44,7 +44,9 @@ alias \
         mkd="mkdir -pv" #make a parent and sub directory
         alias \
         myip="curl ipinfo.io/ip && echo """ \
+        myipc="curl -s ipinfo.io/ip | xargs -I {} geoiplookup {}"\
         neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt" \
+        ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'\
         scr="ffmpeg -f x11grab -i :0.0 out.mp4" \
         ss="maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png" \
         pas="pulseaudio --start" \

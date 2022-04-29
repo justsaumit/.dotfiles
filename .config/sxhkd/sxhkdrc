@@ -88,7 +88,7 @@ super + ctrl + t
 
 # dmenu custom run
 super + d
-	dmenu_run -hp setbg,xkill,pidkill,librewolf,telegram-desktop,bts,trashy,dmount,dumount,picomm,passmenu
+	dmenu_run -hp bts,dcalc,dmount,dumount,librewolf,passmenu,picomm,pidkill,picomm,setbg,telegram-desktop,todo,tolearn,trashy,xkill
 
 #dmenu emoji-picker (universal)
 super + F1
@@ -102,6 +102,7 @@ super + F2
 super + F3
       pidkill
 
+
 # dmenu wifi-menu
 super + ctrl + w
 	wifi-menu
@@ -110,11 +111,11 @@ super + ctrl + w
 super + ctrl + v
 	vpn-menu
 
-#dmenu kill
+# xkill
 super + alt + w
 	xkill
 
-#screenlock
+##screenlock
 #loads cached lockscreen (instant)
 super+ shift +l
 	betterlockscreen --lock dimblur
@@ -126,16 +127,17 @@ super+ ctrl + l
 XF86MonBrightness{Up,Down}
     brillo -s intel_backlight  -{A,U} 5  && dunstify -u normal -t 3000 -r 90210 -i display-brightness "$(printf %.0f%% $( brillo -G) )"
 
+
 # Change screen temp
 
 # Take a screenshot (full)
 Print
-	maim | tee ~/Pictures/Screenshots/pic-full-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+	maim | tee ~/pix/Screenshots/pic-full-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
 # Take a screenshot (sel)
 alt + Print
-##  maim --window $(xdotool getactivewindow) | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -sel c -t image/png
-	maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -sel c -t image/png
+##    maim --window $(xdotool getactivewindow) | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -sel c -t image/png
+	maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
 ctrl + Print
 	flameshot gui

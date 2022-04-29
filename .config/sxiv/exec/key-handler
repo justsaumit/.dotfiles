@@ -1,0 +1,16 @@
+#!/bin/sh
+while read file
+do
+        case "$1" in
+        "d")
+                trash-put  "$file";;
+        "r")
+                convert -rotate 90 "$file" "$file" ;;
+        "c")
+                echo -n "$file" | xclip -selection clipboard ;;
+        "s")
+                setbg "$file";;
+        "i")
+                convert $file -channel RGB -negate /tmp/output.png && sxiv -f /tmp/output.png ;;
+        esac
+done
