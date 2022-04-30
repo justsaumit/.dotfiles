@@ -1,7 +1,0 @@
-#!/bin/sh
-
-sudo mount /dev/nvme0n1p3 /home/C
-sudo mount /dev/nvme0n1p4 /home/D
-sudo mount /dev/nvme0n1p5 /home/E
-sudo mount /dev/nvme0n1p6 /home/F
-sudo mount /dev/nvme0n1p7 /home/G
