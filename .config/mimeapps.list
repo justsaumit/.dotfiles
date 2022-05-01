@@ -1,0 +1,9 @@
+[Default Applications]
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
+text/plain=nvim.desktop
+inode/directory=ranger.desktop
+image/jpeg/png=sxiv.desktop
+
+[Added Associations]
+
