@@ -1,19 +1,26 @@
 #!/bin/bash
 
+rootpixloc=$(echo "/home/saumit/pix/wallpaper/4chget")
 option=$(echo -e "wg\nw" | dmenu -p "Is it wallpaper/general (wg) or anime wallpaper (w)?")
-thread=$(echo "" | dmenu -p "Enter thread no.: (#######)")
 dir=$(echo "" | dmenu -p "Enter folder name")    
+threadopt=$(echo -e "Yes\nNo" | dmenu -p "Do you have the thread link in your clipboard?")
+
+[ $threadopt == "Yes" ] && thread=$(xclip -o|xargs -I % echo %|cut -d\/ -f6) || thread=$(echo "" | dmenu -p "Enter thread no.: (#######)") &&
 
 if [[ $option = w ]] ; then
-        mkdir -p /home/saumit/Pictures/Wallpaper/4chget/w/$dir
+        mkdir -p $rootpixloc/w/$dir
     else
-            mkdir -p /home/saumit/Pictures/Wallpaper/4chget/wg/$dir
+        mkdir -p $rootpixloc/wg/$dir
 fi
 
 case "$option" in
         "wg")
-                wget -P Pictures/Wallpaper/4chget/wg/$dir -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4chan.org/wg/thread/$thread ;;
+                wget -P $rootpixloc/wg/$dir -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4chan.org/wg/thread/$thread ;;
 
         "w")
-                 wget -P Pictures/Wallpaper/4chget/w/$dir -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4channel.org/w/thread/$thread ;;
+                 wget -P $rootpixloc/w/$dir -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4channel.org/w/thread/$thread ;;
  esac
+
+viewopt=$(echo -e "Yes\nNo" | dmenu -p "Would you like to view the images?")
+endir=$rootpixloc\/$option\/$dir
+[ $viewopt == Yes ] && [ $(find $endir -type f | wc -l ) -ge 104 ] || sxiv -f -sf $endir || sxiv -tf -sf $endir
