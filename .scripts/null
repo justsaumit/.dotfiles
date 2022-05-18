@@ -1,1 +1,9 @@
-curl -F"file=@$(find $HOME -type f | dmenu -p "Choose file to be uploaded to null server 0x0.st:" -l 15)" https://0x0.st | xclip -sel c
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    curl -F"file=@$(find $HOME -type f | dmenu -p "Choose file to be uploaded to null server 0x0.st:" -l 15)" https://0x0.st | xclip -sel c
+
+else 
+    fileup="$1"
+    curl -F"file=@$fileup" https://0x0.st | xclip -sel c && dunstify -u normal -i fileup "File uploaded" 
+fi

@@ -13,7 +13,7 @@ alias \
         r="ranger" \
         sr="sudo ranger" \
         t="teams -no-sandbox" \
-        w="whatsapp-nativefier" 
+        w="whatsapp-nativefier" \ 
         sp="spotify" \
         jds="export _JAVA_AWT_WM_NONREPARENTING=1" \
         jd="jdownloader" \

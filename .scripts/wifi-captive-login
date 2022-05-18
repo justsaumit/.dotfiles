@@ -1,0 +1,3 @@
+#!/bin/sh
+login=$(netstat -nr | sed '3p;d' | cut -d " " -f 10) 
+st -e librewolf $login
