@@ -1,143 +1,108 @@
 ##zshell configuration
 
-# Enable colors and have a proper PS1
-autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# defines different colors for files in ls output(by default in bash)
-alias ls='ls --color'
-
-# History in cache directory
-HISTSIZE=
-SAVEHIST=
-HISTFILE=~/.cache/zsh/zsh_history
-
-# Basic auto/tab completion
-autoload -U compinit
-zstyle ':completion:*' menu select
-zstyle ':completion::complete:*' gain-privileges 1
-# Auto complete with case-insensitivity
-zstyle ':completion::complete:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}''r:[._-]=* r:|=*' 'l:|=*' 'r:|=*'
-
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)       #include hidden files
-
-#auto cd
-setopt autocd extendedglob nomatch
-
-# Load aliases
+# Example aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
-##vi mode
-#bindkey -v
-#export KEYTIMEOUT=1
+
+##doesnt work defaults to fzf
+#setopt no_auto_menu  # require an extra TAB press to open the completion menu
+#zstyle ':completion::complete:*' gain-privileges 1
 
 # Use vim keys in tab compete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
+#bindkey -M menuselect 'h' vi-backward-char
+#bindkey -M menuselect 'j' vi-down-line-or-history
+#bindkey -M menuselect 'k' vi-up-line-or-history
+#bindkey -M menuselect 'l' vi-forward-char
 
-# Fix backspace bug when switching modes
-# bindkey ""^?" backward-delete-char
+# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
 
-# Change cursor shape for different vi modes.
-#function zle-keymap-select {
-#    if [[ ${KEYMAP} == vicmd ]] || 
-#       [[ $1 = 'block' ]]; then
-#      echo -ne 'e[1 q'
-#    elif [[ ${KEYMAP} == main ]] ||
-#         [[ ${KEYMAP} == viins ]] ||
-#         [[ ${KEYMAP} == '' ]] ||
-#         [[ $1 = 'line' ]]; then
-#      echo -ne '\e[5 q'
-#    fi
-#}
-#zle -N zle-keymap-select
-#zle-line-init() {
-#    zle -K viins
-#    echo -ne "\e[5 q"
-#}
-#zle -N zle-line-init
-#echo -ne '\e[1 q' #default to block cursor
+# Keyboard type: 'mac' or 'pc'.
+zstyle ':z4h:bindkey' keyboard  'pc'
 
-# Open typed text in a vim buffer
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^v' edit-command-line
+# Don't start tmux.
+zstyle ':z4h:' start-tmux       no
 
+# Mark up shell's output with semantic information.
+zstyle ':z4h:' term-shell-integration 'yes'
 
-# Key Bindings
-[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
-[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
-# [[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
-[[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}"  backward-delete-char
-[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
-[[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"         up-line-or-history
-[[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     up-line-or-history
-[[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"       down-line-or-history
-[[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   down-line-or-history
-[[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"       backward-char
-[[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"      forward-char
-[[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+# Right-arrow key accepts one character ('partial-accept') from
+# command autosuggestions or the whole thing ('accept')?
+zstyle ':z4h:autosuggestions' forward-char 'accept'
 
+# Recursively traverse directories when TAB-completing files.
+zstyle ':z4h:fzf-complete' recurse-dirs 'no'
 
+# Enable direnv to automatically source .envrc files.
+zstyle ':z4h:direnv'         enable 'no'
+# Show "loading" and "unloading" notifications from direnv.
+zstyle ':z4h:direnv:success' notify 'yes'
 
-#key[Control-Left]="${terminfo[kLFT5]}"
-#key[Control-Right]="${terminfo[kRIT5]}"
+# Enable ('yes') or disable ('no') automatic teleportation of z4h over
+# SSH when connecting to these hosts.
+zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
+zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
+# The default value if none of the overrides above match the hostname.
+zstyle ':z4h:ssh:*'                   enable 'no'
 
-[[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
-[[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+# Send these files over to the remote host when connecting over SSH to the
+# enabled hosts.
+zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
 
-# Load aliases 
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+# Install or update core components (fzf, zsh-autosuggestions, etc.) and
+# initialize Zsh. After this point console I/O is unavailable until Zsh
+# is fully initialized. Everything that requires user interaction or can
+# perform network I/O must be done above. Everything else is best done below.
+z4h init || return
 
-# Load zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Suggest aliases for commands
-source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
-# Search repos for programs that can't be found
-source /usr/share/doc/find-the-command/ftc.zsh
+## vi mode in zsh
+bindkey -v
 
-# Spaceship Prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+# Extend PATH.
+path=(~/bin $path)
 
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_CHAR_SYMBOL_ROOT=❯❯
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_CHAR_COLOR_SUCCESS=green
-SPACESHIP_CHAR_COLOR_FAILURE=red
+# Export environment variables.
+export GPG_TTY=$TTY
 
-SPACESHIP_HG_SHOW=false
-SPACESHIP_PACKAGE_SHOW=false
+# Source additional local files if they exist.
+z4h source ~/.env.zsh
 
-SPACESHIP_EXEC_TIME_SHOW=true
-SPACESHIP_EXEC_TIME_PREFIX=took·
-SPACESHIP_EXEC_TIME_COLOR=yellow
+# Use additional Git repositories pulled in with `z4h install`.
+#
+# This is just an example that you should delete. It does nothing useful.
+z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh  # source an individual file
+z4h load   ohmyzsh/ohmyzsh/plugins/emoji-clock  # load a plugin
 
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_ELM_SHOW=false
-SPACESHIP_ELIXIR_SHOW=false
-SPACESHIP_XCODE_SHOW_LOCAL=false
-SPACESHIP_SWIFT_SHOW_LOCAL=false
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_PHP_SHOW=false
-SPACESHIP_RUST_SHOW=true
-SPACESHIP_JULIA_SHOW=false
-SPACESHIP_DOCKER_SHOW=true
-SPACESHIP_DOCKER_CONTEXT_SHOW=true
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_CONDA_SHOW=false
-SPACESHIP_VENV_SHOW=false
-SPACESHIP_PYENV_SHOW=false
-SPACESHIP_DOTNET_SHOW=false
-SPACESHIP_EMBER_SHOW=false
-SPACESHIP_KUBECONTEXT_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_VI_MODE_SHOW=true
-SPACESHIP_JOBS_SHOW=false
+##zvm plugin zshell vi-mode
+#z4h load jeffreytse/zsh-vi-mode/ 
+
+# Define key bindings.
+z4h bindkey z4h-backward-kill-word  Ctrl+Backspace     Ctrl+H
+z4h bindkey z4h-backward-kill-zword Ctrl+Alt+Backspace
+
+z4h bindkey undo Ctrl+/ Shift+Tab  # undo the last command line change
+z4h bindkey redo Alt+/             # redo the last undone command line change
+
+z4h bindkey z4h-cd-back    Alt+Left   # cd into the previous directory
+z4h bindkey z4h-cd-forward Alt+Right  # cd into the next directory
+z4h bindkey z4h-cd-up      Alt+Up     # cd into the parent directory
+z4h bindkey z4h-cd-down    Alt+Down   # cd into a child directory
+
+# Autoload functions.
+autoload -Uz zmv
+
+# Define functions and completions.
+function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
+compdef _directories md
+
+# Define named directories: ~w <=> Windows home directory on WSL.
+[[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
+
+# Define aliases.
+alias tree='tree -a -I .git'
+
+# Add flags to existing aliases.
+alias ls="${aliases[ls]:-ls} -A"
+
+# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
+setopt glob_dots     # no special treatment for file names with a leading dot
+setopt no_auto_menu  # require an extra TAB press to open the completion menu

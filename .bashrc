@@ -12,6 +12,9 @@
 
 #neofetch small
 
+#ble.sh bash w vi-mode and auto-completion
+[[ $- == *i* ]] && source $HOME/.local/src/blesh/ble.sh --noattach
+
 alias ls='ls --color=auto'
 #PS1='[\u@\h \W]\$ '
 
@@ -27,7 +30,7 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 shopt -s autocd
 
 #vi mode in bash (uncomment after expertise)
-#set -o vi
+set -o vi
 
 #Ctrl+D EOF Signal will work on billionth press
 #export IGNOREEOF=1000000000
@@ -53,3 +56,6 @@ HISTCONTROL=ignoredups
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 #partially supported XDG Base Directory
 [ -f "$HOME/.config/env" ] && source "$HOME/.config/env"
+
+[[ ${BLE_VERSION-} ]] && ble-attach
+

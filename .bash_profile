@@ -12,12 +12,10 @@
 #your $PATH env variable is a list of all your directories from which you can run commands without giving the whole location 
 #export PATH="$PATH:$HOME/.scripts"
 # Setting up default applications
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
-
-
 
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
@@ -29,27 +27,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 fi
 
 
-
 #Switch escape and Caps Lock 
 #sudo -n loadkeys ~/.scripts/ttymaps.kmap 2>/dev/null
 
-
-# Load powerline-go prompt
-function global:prompt {
-    $pwd = $ExecutionContext.SessionState.Path.CurrentLocation
-    $startInfo = New-Object System.Diagnostics.ProcessStartInfo
-    $startInfo.FileName = "powerline-go"
-    $startInfo.Arguments = "-shell bare"
-    $startInfo.Environment["TERM"] = "xterm-256color"
-    $startInfo.CreateNoWindow = $true
-    $startInfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8
-    $startInfo.RedirectStandardOutput = $true
-    $startInfo.UseShellExecute = $false
-    $startInfo.WorkingDirectory = $pwd
-    $process = New-Object System.Diagnostics.Process
-    $process.StartInfo = $startInfo
-    $process.Start() | Out-Null
-    $standardOut = $process.StandardOutput.ReadToEnd()
-    $process.WaitForExit()
-    $standardOut
-}
