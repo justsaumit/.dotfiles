@@ -1,0 +1,10 @@
+#!/bin/sh
+
+##Simple shellscript to set CapsLock key to Escape key automatically
+##whenever I plug in any of my keyboard (wired or wireless)
+
+#PreRequisite lsusb/usbutils
+[ -z "command -v lsusb" ] && echo "Install usbutils" && exit
+
+
+[ -n 'lsusb | grep "04f3:152e"' ] && setxkbmap -option caps:escape
