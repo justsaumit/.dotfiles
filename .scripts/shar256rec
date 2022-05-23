@@ -1,0 +1,70 @@
+#!/bin/bash
+#recursive sha256sum script for an entire directory
+
+  #FUNCTIONS OR FUNCTYOU?
+  function s_readonly { err=$(date +%s%N); cd "$1"; mkdir $err 2> /tmp/$err; rmdir $err 2>/dev/null; echo $(cat /tmp/$err|grep -i "Read-only file system"|wc -l);shred -n 0 -uz /tmp/$err; }
+  function w_denied { echo $(err=$(date +%s%N); cd "$1"; mkdir $err 2> /tmp/$err; rmdir $err 2>/dev/null; cat /tmp/$err|grep -i "Permission denied"|wc -l;shred -n 0 -uz /tmp/$err); }
+  function r_denied { echo $(err=$(date +%s%N); cd "$1" >/dev/null 2> /tmp/$err; find . >/dev/null 2>> /tmp/$err; cat /tmp/$err|grep -i "Permission denied"|wc -l;shred -n 0 -uz /tmp/$err); }
+  function rando_name { rando=$(echo $(date +%s%N)|sha256sum|awk '{print $1}'); rando=${rando::$(shuf -i 30-77 -n 1)}; echo $rando;}
+  function ms0 { ms0=$(($(date +%s%N)/1000000)); }; function mstot { echo $(($(($(date +%s%N)/1000000))-$ms0));}
+  function s0 { s0=$(date +%s); }; function stot { echo $(($(date +%s)-$s0));}
+  s0
+
+  #CHECK IF A TARGET DIR WAS SPECIFIED (-t= or --target= switch)
+  if [ ! -z "$1" ]; then arg1="$1"; arg1_3=${arg1::3}; arg1_9=${arg1::9};fi
+  if [ "$arg1_3" = "-t=" -o "$arg1_9" = "--target=" ]; then 
+    switch=$(echo $arg1|awk -F '=' '{print $1}')
+    switch_chr=$((${#switch}+1))
+    target=${arg1:$switch_chr}
+    current=$(pwd)
+    cd "$target"
+    arg1="" #<- cancels the not path in the find line
+  else
+    current=$(pwd)
+    target=$(pwd) 
+  fi
+
+  echo -e  "=======================================================================\
+    \nsha256rec: \
+          \n=======================================================================\
+          \nCurrent Folder : $current \
+    \nTarget Folder  : $target"
+
+  #GETS DEFAULT_USER, ASSUME'S YOU'RE USER 1000, IF 1000 DOESN'T EXIST SEARCHES 999, THEN 1001, 1002
+  default_user=$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)
+  if [ -z "$default_user" ]; then default_user=$(awk -v val=999 -F ":" '$3==val{print $1}' /etc/passwd); fi
+  if [ -z "$default_user" ]; then default_user=$(awk -v val=1001 -F ":" '$3==val{print $1}' /etc/passwd); fi
+  if [ -z "$default_user" ]; then default_user=$(awk -v val=1002 -F ":" '$3==val{print $1}' /etc/passwd); fi
+
+  if [ "$(users | wc -l)" = "1" ]; then USER=$(users|awk '{print $1}'); else USER=$default_user;fi #not perfect but meh...
+
+  #running rando_name in this very specific spot between USER detection and Permission detection, some interfers somehow with detection functions... 
+  #the rando function placed underneath the user detection is somehow turning c=$current from the dir path to whatever rando_name puts out.
+
+  #FIGURE OUT WHERE TO PUT HASH LIST
+  hash_file="000_sha256sum_recurs_${target##*/}_d_$(date +%d-%m-20%y)_t_$(date +%H.%M).txt"
+  if [ $(s_readonly "$current") -gt 0 -o $(w_denied "$current") -gt 0 ]; then if [ "$(whoami)" != root ]; then dest="/home/$(whoami)";echo -e "Output File    : $dest/$hash_file\n\n";echo "Seems you're currently in either a Read-Only system or a root owned directory as a regular user. You can find the hash results in your home folder."; else dest="/home/$USER";echo -e "Output File    : $dest/$hash_file\n\n";echo "Seems you're currently a Read-Only system. You can find the hash results in $USER's home folder.";fi; else dest="$current";echo -e "Output File    : $dest/$hash_file\n\n";echo "Results will be saved here.";fi
+
+
+
+  #CAN REGULAR USER ACCESS TARGET DIR? ARE ALL IT'S SUBDIRS READABLE?
+  if [ $(r_denied "$target") -gt 0 ]; then sudo=sudo; echo "Some folder were not read-able as a regular user. User elevation will be required.";fi
+
+  #PERFORM RECURSIVE HASHING
+  command=$($sudo find . -type f -not -type l -not -path "$arg1"  -not -path "$2"  -not -path "$3" -not -path "$4"  -not -path "$5"  -not -path "$6" -not -path "$7"  -not -path "$8"  -not -path "$9" |grep -v "\./000_sha"|sort|awk "{print \"$sudo sha256sum \\\"\"\$0}"|awk '{print $0"\""}'|tr '\n' ';')
+  eval $command > "$dest/$hash_file"
+
+  sha256sum "$dest/$hash_file"
+  echo "Operation Length: $(stot) Seconds."
+  echo -e  "======================================================================="
+
+
+
+  if [ "$target" != "$current" ]; then cd "$current";fi
+
+
+  exit
+  #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

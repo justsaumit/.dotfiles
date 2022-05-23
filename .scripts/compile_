@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    echo "enter a correct .cpp file"
+    exit
+else
+    file="$1"
+fi
+output=$(echo "$1" | cut -d "." -f1)
+echo "$file"
+echo "$output" 
+g++ -o $output $file -lstdc++

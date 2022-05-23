@@ -1,6 +1,6 @@
 #!/bin/bash
 option=$(echo -e "Connect\nDisconnect\nChange profile"| dmenu -p "Do you wish to connect/disconnect or change soundprofile of your bluetooth device:") 
-MAC=$(echo "A1:B3:EC:B1:53:60")
+MAC=$(echo "76:67:11:36:64:A2")
 case $option in
     "Connect")
         status=$(systemctl status bluetooth | grep Active | cut -d " " -f 7)
