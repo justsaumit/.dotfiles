@@ -6,5 +6,5 @@
 #PreRequisite lsusb/usbutils
 [ -z "command -v lsusb" ] && echo "Install usbutils" && exit
 
+[[ 'lsusb | grep -e 04f3:152e -e 25a7:fa67' ]] && setxkbmap -option caps:escape
 
-[ -n 'lsusb | grep "04f3:152e"' ] && setxkbmap -option caps:escape
