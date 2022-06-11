@@ -48,7 +48,7 @@ alias \
         neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt" \
         ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'\
         scr="ffmpeg -f x11grab -i :0.0 out.mp4" \
-        ss="maim -D -u --select | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png" \
+        ss="maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png" \
         pas="pulseaudio --start" \
         pak="pulseaudio --kill" \
         pm="pulsemixer" \

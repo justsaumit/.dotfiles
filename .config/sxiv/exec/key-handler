@@ -6,8 +6,10 @@ do
                 trash-put  "$file";;
         "r")
                 convert -rotate 90 "$file" "$file" ;;
+        "R")
+                convert -rotate 270 "$file" "$file" ;;
         "c")
-                echo -n "$file" | xclip -selection clipboard ;;
+                xclip -sel c -t image/png -i $file ;;
         "s")
                 setbg "$file";;
         "i")
