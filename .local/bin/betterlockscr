@@ -1,4 +1,0 @@
-#!/bin/sh
-
-wall=$(find $HOME/Pictures/Wallpaper/betterlockscreen -type f | shuf -n 1)
-betterlockscreen -u "$wall" -l dimblur 
