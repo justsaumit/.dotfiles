@@ -1,0 +1,4 @@
+#!/bin/sh
+# open surf browser in tabbed format
+
+tabbed -c surf -e & disown

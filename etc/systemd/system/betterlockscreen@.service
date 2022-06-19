@@ -7,9 +7,9 @@ Before=suspend.target
 User=%I
 Type=simple
 Environment=DISPLAY=:0
+ExecStartPre=/usr/bin/xset dpms force suspend
 ExecStart=/usr/bin/betterlockscreen --lock dimblur
 TimeoutSec=infinity
-ExecStartPost=/usr/bin/sleep 1
 
 [Install]
 WantedBy=sleep.target
