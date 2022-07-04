@@ -9,10 +9,10 @@ do
         "R")
                 convert -rotate 270 "$file" "$file" ;;
         "c")
-                xclip -sel c -t image/png -i $file ;;
+                xclip -sel c -t image/png -i "$file" ;;
         "s")
                 setbg "$file";;
         "i")
-                convert $file -channel RGB -negate /tmp/output.png && sxiv -f /tmp/output.png ;;
+                convert "$file" -channel RGB -negate /tmp/output.png && sxiv -f /tmp/output.png ;;
         esac
 done
