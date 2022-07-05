@@ -7,8 +7,18 @@ for f in * ;
 do mv -n "$f" "$(date -r "$f" +"%Y%m%d_%H%M%S")_$f"; 
 done
 
-#open in vimv
-#let @a=1 | g/^.\{0,16}/s//\=i.'.' | let i=i+1
+##open in vimv
+#let @a=1 | g/^.\{0,16}/s//\=i.'. ' | let i=i+1
+#add zero in front use period to repeat as necess
+
+i=1;
+for d in * ;
+do mv -n "$d" "$(ls | sed '=' | sed 'N;s/\n/. /' | awk -v i=$i 'NR==i')" && i=$((i+1));
+done
+
+
 #add zeroes in front if lenofnod = 1 
-#add zeroes in front if lenofnod = 2
+
+#for f in *
+#do rename
 
