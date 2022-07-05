@@ -13,12 +13,5 @@ done
 
 i=1;
 for d in * ;
-do mv -n "$d" "$(ls | sed '=' | sed 'N;s/\n/. /' | awk -v i=$i 'NR==i')" && i=$((i+1));
+do echo $d $i ; mv -n "$d" "$(ls | nl -w$lenofnod -s ". " -n rz | awk -v i=$i 'NR==i')" ; i=$((i+1));
 done
-
-
-#add zeroes in front if lenofnod = 1 
-
-#for f in *
-#do rename
-
