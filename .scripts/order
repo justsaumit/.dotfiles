@@ -3,15 +3,4 @@
 noofdirs=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
 lenofnod=$(echo -n "$noofdirs" | wc -m) ## Flag n to prevent newline count
 
-for f in * ; 
-do mv -n "$f" "$(date -r "$f" +"%Y%m%d_%H%M%S")_$f"; 
-done
-
-##open in vimv
-#let @a=1 | g/^.\{0,16}/s//\=i.'. ' | let i=i+1
-#add zero in front use period to repeat as necess
-
-i=1;
-for d in * ;
-do echo $d $i ; mv -n "$d" "$(ls | nl -w$lenofnod -s ". " -n rz | awk -v i=$i 'NR==i')" ; i=$((i+1));
-done
+ls -vtr | nl -w$lenofnod -s ". " -n rz | while read n f; do mv -n "$f" "$n $f" ; done 
