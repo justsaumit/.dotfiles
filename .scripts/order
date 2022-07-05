@@ -1,0 +1,14 @@
+#!/bin/sh
+
+noofdirs=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
+lenofnod=$(echo -n "$noofdirs" | wc -m) ## Flag n to prevent newline count
+
+for f in * ; 
+do mv -n "$f" "$(date -r "$f" +"%Y%m%d_%H%M%S")_$f"; 
+done
+
+#open in vimv
+#let @a=1 | g/^.\{0,16}/s//\=i.'.' | let i=i+1
+#add zeroes in front if lenofnod = 1 
+#add zeroes in front if lenofnod = 2
+

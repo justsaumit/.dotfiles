@@ -84,17 +84,17 @@ super + ctrl + t
 super + d
 	dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,librewolf,passmenu,picomm,pidkill,picomm,setbg,st,telegram-desktop,todo,tolearn,trashy,xkill
 
-#dmenu emoji-picker (universal)
+#dmenu pidkill
 super + F1
+      pidkill
+
+#dmenu emoji-picker (universal)
+super + F2
       emojisel
 
 #dmenu emoji-picker (active-window)
-super + F2
-      emojiselw
-
-#dmenu pidkill
 super + F3
-      pidkill
+      emojiselw
 
 
 # dmenu wifi-menu
