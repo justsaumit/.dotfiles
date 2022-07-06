@@ -1,6 +1,17 @@
 #!/bin/sh
+## Simple shellscript to index all directories present in a main directory based on their creation time
 
 noofdirs=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
 lenofnod=$(echo -n "$noofdirs" | wc -m) ## Flag n to prevent newline count
 
-ls -vtr | nl -w$lenofnod -s ". " -n rz | while read n f; do mv -n "$f" "$n $f" ; done 
+# d flag for reverse indexing i.e most recent file-directory is indexed 1.
+if [[ "$1" = "-d" ]]; then
+    ls -d */ -vt | cut -d'/' -f1 | nl -w$lenofnod -s ". " -n rz | while read n f; 
+        do mv -n "$f" "$n $f" ;
+    done
+#else by default index oldest file-directory as 1.
+else
+    ls -d */ -vtr | cut -d'/' -f1 | nl -w$lenofnod -s ". " -n rz | while read n f; 
+        do mv -n "$f" "$n $f" ; 
+    done
+fi
