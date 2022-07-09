@@ -46,23 +46,38 @@ XF86Audio{Raise,Lower}Volume
 # Applications #
 ################
 
+# Launch Brave
+super + q
+	brave
+super + ctrl + q
+	brave --incognito
+super + alt + q
+	brave --tor
+
 ##(Temp Launch)
 # Launch ranger
 super + r
    exec $TERMINAL ranger
-
 # Launch pulsemixer
 super + p
    exec $TERMINAL pulsemixer
-
 #Launch <go,h,bash>top
 super + shift {g,h,b}
    exec $TERMINAL {go,h,bash}top
+
+#Launch galculator - a GTK 2/3 based scientific calculator
+XF86Calculator
+    exec $TERMINAL -c "stfloat" -e galculator
 
 ##(Perma Launch)
 # Launch wa
 super + shift + w
    whatsapp-nativefier
+
+
+# Launch outlook
+#super + e 
+#	brave https://outlook.office365.com/mail/inbox
 
 # Launch teams
 super + shift + t
@@ -82,7 +97,7 @@ super + ctrl + t
 
 # dmenu custom run
 super + d
-	dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,librewolf,passmenu,picomm,pidkill,picomm,setbg,st,telegram-desktop,todo,tolearn,trashy,xkill
+	dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,librewolf,passmenu,picomm,pidkill,setbg,st,telegram-desktop,todo,tolearn,trashy,ungoogled-chromium,xkill
 
 #dmenu pidkill
 super + F1
@@ -95,7 +110,6 @@ super + F2
 #dmenu emoji-picker (active-window)
 super + F3
       emojiselw
-
 
 # dmenu wifi-menu
 super + ctrl + w
