@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Ungoogled Chromium
+Comment=Ungoogled-Chromium is a Free and Open-Source implementation of Chromium web browser, without the Google components and blobs.
+Exec=/usr/bin/chromium --force--dark-mode --enable-features=WebUIDarkMode --no-default-browser-check
+Terminal=false
+Type=Application
+Keywords=Navigator
+Categories=Network;WebBrowser;
+StartupNotify=false
+X-Desktop-File-Install-Version=0.26
+Hidden=false
