@@ -31,15 +31,16 @@ XF86AudioPlay
 # Change tracks spotify only
 
 XF86Audio{Prev,Next}
-playerctl -p spotify {previous,next}
+    playerctl -p spotify {previous,next}
 
+# Change spotify volume only
+XF86{HomePage,Mail}
+    playerctl -p spotify volume 0.05{+,-}
+#
 #super + ;
 #dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
-# Change spotify volume only
-#super + ctrl + {Up,Down}
-#playerctl -p spotify volume 
-#super + {F3,F5}
+super + {F3,F5}
 #spotifyvol{inc,dec}.py
 
 
@@ -86,7 +87,7 @@ super + shift + t
 	
 # Launch spotify 
 super + shift + m
-	spotify
+	sp
 
 # Launch discord
 super + shift + d
