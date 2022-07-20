@@ -13,7 +13,7 @@
 #neofetch small
 
 #ble.sh bash w vi-mode and auto-completion
-[[ $- == *i* ]] && source $HOME/.local/src/blesh/ble.sh --noattach
+##[[ $- == *i* ]] && source $HOME/.local/src/blesh/ble.sh --noattach
 
 alias ls='ls --color=auto'
 #PS1='[\u@\h \W]\$ '
@@ -40,9 +40,8 @@ set -o ignoreeof
 export PATH="$PATH:$HOME/.scripts"
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$HOME/.local/bin"
-
-
 export SUDO_ASKPASS="$HOME/.local/bin/dpass"
+
 
 #infinite history
 HISTSIZE= HISTFILESIZE= 
@@ -50,12 +49,25 @@ HISTSIZE= HISTFILESIZE=
 #HISTTIMEFORMAT="%d/%m/%y %T "
 HISTTIMEFORMAT="%F %T"
 #ignore dupes
-HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups:erasedups
+
+#XDG
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
+export TERMINFO="$XDG_DATA_HOME/terminfo"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
 
 # Load aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 #partially supported XDG Base Directory
 [ -f "$HOME/.config/env" ] && source "$HOME/.config/env"
 
-[[ ${BLE_VERSION-} ]] && ble-attach
+#[[ ${BLE_VERSION-} ]] && ble-attach
 
+export N_PREFIX="$HOME/.local/usr/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
