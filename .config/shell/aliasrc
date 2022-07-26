@@ -61,7 +61,7 @@ alias \
         dwm="cd .local/src/dwm" \
         dwmblocks="cd .local/src/dwmblocks" \
         calc="quich" \
-        rm="trash" \
+        rm="trash -v" \
         listdel="trash-list" \
         restore="trash-restore" \
         empty="trash-empty" \

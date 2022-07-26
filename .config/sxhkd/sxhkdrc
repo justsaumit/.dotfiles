@@ -40,7 +40,7 @@ XF86{HomePage,Mail}
 #super + ;
 #dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
-super + {F3,F5}
+#super + {F3,F5}
 #spotifyvol{inc,dec}.py
 
 

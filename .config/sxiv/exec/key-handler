@@ -9,7 +9,7 @@ do
         "R")
                 convert -rotate 270 "$file" "$file" ;;
         "c")
-                xclip -sel c -t image/png -i "$file" ;;
+                echo -n "$file" | xclip -sel c ;;
         "s")
                 setbg "$file";;
         "i")
