@@ -6,13 +6,13 @@ do
                 trash-put  "$file";;
         "r")
                 convert -rotate 90 "$file" "$file" ;;
-        "R")
-                convert -rotate 270 "$file" "$file" ;;
+	"R")
+		convert -rotate 270 "$file" "$file" ;;
         "c")
-                echo -n "$file" | xclip -sel c ;;
+                xclip -sel c -t image/png -i "$file" ;;
         "s")
                 setbg "$file";;
         "i")
-                convert "$file" -channel RGB -negate /tmp/output.png && sxiv -f /tmp/output.png ;;
+                convert $file -channel RGB -negate /tmp/output.png && sxiv -f /tmp/output.png ;;
         esac
 done

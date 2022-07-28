@@ -29,7 +29,7 @@
     idle_threshold = 120
 
     # Font and typography settings
-    font = Monospace 14
+    font = JetBrainsMono 14
     alignment = left
     word_wrap = yes
 
