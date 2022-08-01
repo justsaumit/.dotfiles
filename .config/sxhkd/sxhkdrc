@@ -105,6 +105,10 @@ super + d
 super + F1
       pidkill
 
+#dmenu pidkillall
+ctrl + F1
+      pidkillall
+
 #dmenu emoji-picker (universal)
 super + F2
       emojisel
