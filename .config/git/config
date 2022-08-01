@@ -1,0 +1,10 @@
+[user]
+    email = justsaumit@protonmail.com
+    name = Saumit Dinesan
+    signingkey = 6558C915A20CDD93
+[commit]
+    gpgsign = true
+[tag]
+    gpgSign = true
+[init]
+    defaultBranch = main
