@@ -5,6 +5,8 @@
 # Toggle mute
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
+super + F4
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Toggle mic mute
 
@@ -76,18 +78,21 @@ XF86Calculator
 super + shift + w
    whatsapp-nativefier
 
+# Launch ncloud
+super + shift + n
+   qutebrowser https://ncloud.draconyan.xyz
 
 # Launch outlook
-#super + e 
-#	brave https://outlook.office365.com/mail/inbox
+super + shift + e
+   qutebrowser https://outlook.office365.com/mail/inbox
 
 # Launch teams
 super + shift + t
-	teams -no-sandbox
+   qutebrowser https://teams.microsoft.com
 	
 # Launch spotify 
 super + shift + m
-	sp
+   sp
 
 # Launch discord
 super + shift + d

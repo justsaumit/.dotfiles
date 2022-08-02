@@ -57,9 +57,9 @@ alias \
         rs="redshift -P -O" \
         prime="prime-run " #enable hardware acceleration 
         alias  \
-        st="cd .local/src/st" \
-        dwm="cd .local/src/dwm" \
-        dwmblocks="cd .local/src/dwmblocks" \
+        st="cd ~/.local/src/st" \
+        dwm="cd ~/.local/src/dwm" \
+        dwmblocks="cd ~/.local/src/dwmblocks" \
         calc="quich" \
         rm="trash -v" \
         listdel="trash-list" \

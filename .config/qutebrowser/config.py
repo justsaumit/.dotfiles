@@ -12,7 +12,7 @@
 
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
-# config.load_autoconfig(True)
+config.load_autoconfig(False)
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
@@ -1802,7 +1802,7 @@ c.scrolling.smooth = True
 ##   - never: Always hide the statusbar.
 ##   - in-mode: Show the statusbar when in modes other than normal mode.
 c.statusbar.show = 'in-mode'
-
+c.tabs.show = 'multiple'
 ## List of widgets displayed in the statusbar.
 ## Type: List of StatusbarWidget
 ## Valid values:
