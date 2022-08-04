@@ -1,0 +1,11 @@
+#!/bin/sh
+## Simple shellscript to convert png images to jpg and vice versa in a given folder
+
+if [[ "$1" = "-j" ]]; then
+	find . -name "*.png" -exec mogrify -format jpg {} \;
+elif [[ "$1" = "-p" ]]; then
+	find . -name "*.jpg" -exec mogrify -format png {} \;
+else
+	echo "Use correct flags!" && exit
+fi
+

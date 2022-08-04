@@ -1,0 +1,3 @@
+#!/bin/sh
+output=$(echo $1 | cut -d. -f1)
+pdftoppm -jpeg -r 300 $1 $output.jpg
