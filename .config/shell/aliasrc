@@ -2,67 +2,65 @@
 
 #some aliases for launching applications
 alias \
-        b="brave" \
-        bb="brave --incognito" \
-        bbb="brave --tor" \
-        github="brave https://github.com/justsaumit" \
-        ff="librewolf" \
-        v="nvim" \
-        sv="sudo nvim" \
-        vim="nvim" \
-        r="ranger" \
-        sr="sudo ranger" \
-        t="teams -no-sandbox" \
-        w="whatsapp-nativefier" \ 
-        sp="spotify" \
-        jds="export _JAVA_AWT_WM_NONREPARENTING=1" \
-        jd="jdownloader" \
-        yt="ytfzf -t" \
-        ytq="ytfzf -faH" \
-        leaf="notepadqq" \
-        qb="qbittorrent" \
-        polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+	b="brave" \
+	bb="brave --incognito" \
+	bbb="brave --tor" \
+	github="brave https://github.com/justsaumit" \
+	ff="librewolf" \
+	v="nvim" \
+	sv="sudo nvim" \
+	vim="nvim" \
+	r="ranger" \
+	sr="sudo ranger" \
+	ncmpcpp='ncmpcpp -b .config/ncmpcpp/keybindings' \
+	w="whatsapp-nativefier" \ 
+	sp="spotify" \
+	jds="export _JAVA_AWT_WM_NONREPARENTING=1" \
+	jd="jdownloader" \
+	yt="ytfzf -t" \
+	ytq="ytfzf -faH" \
+	leaf="notepadqq" \
+	qb="qbittorrent" \
+	polkit="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 #git
 alias \
-       g1="git add ." \
-       g2="git commit -S -m" \
-       g3="git push origin HEAD --force" \
-       gs="git status" \
-       gd="git diff --staged" \
-       glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+	g1="git add ." \
+	g2="git commit -S -m" \
+	g3="git push origin HEAD --force" \
+	gs="git status" \
+	gd="git diff --staged" \
+	glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 #useful command line substitutions
 alias \
-        space="ncdu" \
-        h="cat ~/.bash_history|fzf|xclip -sel c" \
-        sha="shasum -a 256" \
-        untar="tar -zxvf" \
-        untar2="tar xvf" \
-        cp="cp -iv" \
-        mv="mv -iv" \
-        mkd="mkdir -pv" #make a parent and sub directory
-        alias \
-        myip="curl ipinfo.io/ip && echo """ \
-        myipc="curl -s ipinfo.io/ip | xargs -I {} geoiplookup {}"\
-        neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt" \
-        ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'\
-        scr="ffmpeg -f x11grab -i :0.0 out.mp4" \
-        ss="maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png" \
-        pas="pulseaudio --start" \
-        pak="pulseaudio --kill" \
-        pm="pulsemixer" \
-        ssha="echo 'ssh-keygen -t ed25519 -a 100 -f ~/.ssh/<Identityfile> -C <comment>'" \
-        br="brightnessctl set " \
-        rs="redshift -P -O" \
-        prime="prime-run " #enable hardware acceleration 
-        alias  \
-        st="cd ~/.local/src/st" \
-        dwm="cd ~/.local/src/dwm" \
-        dwmblocks="cd ~/.local/src/dwmblocks" \
-        calc="quich" \
-        rm="trash -v" \
-        listdel="trash-list" \
-        restore="trash-restore" \
-        empty="trash-empty" \
-        q="exit" 
+	space="ncdu" \
+	h="cat $HISTFILE |fzf|xclip -sel c" \
+	sha="shasum -a 256" \
+	untar="tar -zxvf" \
+	untar2="tar xvf" \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	mkd="mkdir -pv" \
+	myip="curl ipinfo.io/ip && echo """ \
+	myipc="curl -s ipinfo.io/ip | xargs -I {} geoiplookup {}" \
+	neofetch="neofetch --ascii .config/neofetch/arch-ascii.txt" \
+	ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'\
+	scr="ffmpeg -f x11grab -i :0.0 out.mp4" \
+	ss="maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png" \
+	pas="pulseaudio --start" \
+	pak="pulseaudio --kill" \
+	pm="pulsemixer" \
+	ssha="echo 'ssh-keygen -t ed25519 -a 100 -f ~/.ssh/<Identityfile> -C <comment>'" \
+	br="brightnessctl set " \
+	rs="redshift -P -O" \
+	prime="prime-run " \
+	st="cd ~/.local/src/st" \
+	dwm="cd ~/.local/src/dwm" \
+	dwmblocks="cd ~/.local/src/dwmblocks" \
+	calc="quich" \
+	rm="trash -v" \
+	listdel="trash-list" \
+	restore="trash-restore" \
+	empty="trash-empty" \
+	q="exit" 
