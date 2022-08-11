@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rootpixloc="$HOME/pix/wallpaper/4chget"
+rootpixloc="$HOME/pix/Wallpaper/4chget"
 option=$(echo -e "wg\nw" | dmenu -p "Is it wallpaper/general (wg) or anime wallpaper (w)?")
 dir=$(echo "" | dmenu -p "Enter folder name")    
 threadopt=$(echo -e "Yes\nNo" | dmenu -p "Do you have the thread link in your clipboard?")
@@ -9,11 +9,12 @@ threadopt=$(echo -e "Yes\nNo" | dmenu -p "Do you have the thread link in your cl
 
 if [[ "$option" = w ]] ; then
         mkdir -p "$rootpixloc"/w/"$dir"
+	nel="nel"
     else
         mkdir -p "$rootpixloc"/wg/"$dir"
 fi
 
-wget -P "$rootpixloc"/"$option"/"$dir" -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4chan.org/wg/thread/"$thread"
+wget -P "$rootpixloc"/"$option"/"$dir" -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '????????????????s.*' https://boards.4chan$nel.org/$option/thread/"$thread"
 
 viewopt=$(echo -e "Yes\nNo" | dmenu -p "Would you like to view the images?")
 endir=$rootpixloc\/$option\/$dir

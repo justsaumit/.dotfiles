@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-rootpapesdir="$HOME/pix/wallpaper/4chget"
-file $rootpapesdir || mkdir $rootpapesdir
+rootpapesdir="$HOME/pix/Wallpaper/4chget"
+[ -d "$rootpapesdir" ] || mkdir "$rootpapesdir"
 echo "Welcome to 4chan web/image scrapping script"
 echo "Is it wallpaper/general (wg) or anime wallpaper (w)?"
 read option
@@ -9,17 +9,11 @@ echo "Enter folder name:"
 read dir
 echo "Enter thread no.: (#######)"
 read thread
-if [[ $option = w ]] ; then
+if [[ "$option" = w ]] ; then
  	mkdir -p "$rootpapesdir"/w/"$dir"
+	$nel=nel
 else
 	mkdir -p "$rootpapesdir"/wg/"$dir"
 fi
 
-case "$option" in
-	"wg")
-		wget -P Pictures/Wallpaper/4chget/wg/"$dir" -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4chan.org/wg/thread/"$thread" ;;
-
-	"w")
-		wget -P "$rootpapesdir"/w/"$dir" -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '?????????????s.*' https://boards.4channel.org/w/thread/"$thread" ;;
-esac
-
+wget -P "$rootpapesdir"/"$option"/"$dir" -nd -r -l 1 -H -D i.4cdn.org,is2.4chan.org -A png,jpg,jpeg -R '????????????????s.*' https://boards.4chan"$nel".org/$option/thread/"$thread"
