@@ -1,5 +1,5 @@
 #!/bin/sh
 
-latestss=$(ls -t $HOME/pix/Screenshots/ | head -n5 | dmenu -l 5)
+latestss=$(ls -t $HOME/pix/Screenshots/ | head -n10 | dmenu -l 10)
 
 xclip -selection clipboard -t image/png -i $HOME/pix/Screenshots/$latestss

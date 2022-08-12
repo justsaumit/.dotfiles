@@ -1,5 +1,5 @@
 #!/bin/sh
 if command -v netstat 1>/dev/null; then
-    login=$(netstat -nr | sed '3p;d' | cut -d " " -f 10) ;
+    login=$(netstat -nr | sed -n '3p' | cut -d " " -f 10) ;
     st -e librewolf $login ;
 fi
