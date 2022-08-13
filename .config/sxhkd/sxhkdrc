@@ -17,15 +17,6 @@ super + F4
 XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {+,-}2% && dunstify "Volume Changed" "Volume set to $(pamixer --get-volume)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
 
-# Change volume
-#super + {k,j}
-#    pactl set-sink-volume @DEFAULT_SINK@ {+,-}2%
-
-# Change volume, chunky
-#super + shift + {k,j}
-#    pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%
-
-
 #Toggle play/pause in spotify (universal)
 
 XF86AudioPlay
@@ -39,25 +30,6 @@ XF86Audio{Prev,Next}
 # Change spotify volume only
 XF86{HomePage,Mail}
      playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify Volume set to $(printf %.0f%% $(echo $(playerctl -p spotify volume)*100 | bc))" -i spotify -r {1400,1401}
-#    playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume set to $(echo $(playerctl -p spotify volume)*100 | bc | sed 's/\..*/%/')" -i spotify -r {1400,1401}
-
-#    playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume set to $(playerctl -p spotify volume)"  -i spotify -t 1500 -r 2300
-#    playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume changed to $(awk -vn=$(playerctl -p spotify volume) 'BEGIN{printf('%.0f%',n*100)}')" -i spotify -t 1500 -r 2300
-
-#playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume changed to $(echo $(playerctl -p spotify volume)*100 | bc | sed 's/\..*/%/')" -i spotify
-
-
-#dunstify "Volume Changed" "Spotify volume changed to $(echo $(playerctl -p spotify volume)*100 | bc |  sed 's/\..*/%/')"
-
-
- 
-#
-#super + ;
-#dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-
-#super + {F3,F5}
-#spotifyvol{inc,dec}.py
-
 
 ################
 # Applications #
@@ -160,7 +132,6 @@ super + ctrl + l
 # Change screen brightness
 XF86MonBrightness{Up,Down}
     brillo -s intel_backlight  -{A,U} 5  && dunstify -u normal -t 3000 -r 90210 -i brightness "$(printf %.0f%% $( brillo -G) )"
-
 
 # Change screen temp
 
