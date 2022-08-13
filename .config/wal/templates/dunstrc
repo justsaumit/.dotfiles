@@ -11,7 +11,6 @@
     indicate_hidden = yes
     shrink = yes
     transparency = 10
-    #notification_height = 0
 
     # Show multiple notifications in the same box
     separator_height = 2
@@ -51,14 +50,13 @@
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/brave-new-tab
+    browser = /usr/bin/brave -new-tab
 
 # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
 
     title = Dunst
     class = Dunst
-    startup_notification = false
     force_xinerama = false
 
 
@@ -77,7 +75,8 @@
     foreground = "{background}"
 
 [urgency_critical]
-    background = "{foreground}"
-    foreground = "{background}"
+    background = "#900000"
+    foreground = "#ffffff"
+    fram_color = "ff0000"
 
 # vim:ft=cfg
