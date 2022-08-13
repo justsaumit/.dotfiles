@@ -4,6 +4,6 @@ psout=$(ps -u $USER -o pid,%cpu,%mem,comm | sed -n '1!p' | sort -b -k2 -r| cut -
 //uniq without piping into sort before with the help of awk
 
 killall $psout 2>/dev/null &&
-[ -n $psout ] && dunstify "Terminated all processes Successfully" "$psout was killed"
+[ -n $psout ] && dunstify "Terminated all processes Successfully" "$psout was killed" -i skull
 
 
