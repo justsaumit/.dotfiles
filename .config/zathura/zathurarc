@@ -11,10 +11,10 @@ map R rotate
 
 map J zoom in
 map K zoom out
-map u = follow
+#map u =
 
-map H full-up
-map L full-down
+map H pg down
+map L pg up
 
 map <C-n> search forward
 map <C-b> search backward
@@ -28,7 +28,6 @@ map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 
 map i recolor
-
 map gg goto top
 map G goto bottom
 
