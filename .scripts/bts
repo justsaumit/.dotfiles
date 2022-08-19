@@ -1,12 +1,14 @@
 #!/bin/bash
-option=$(echo -e "Connect\nDisconnect\nChange profile"| dmenu -p "Do you wish to connect/disconnect or change soundprofile of your bluetooth device:") 
-MAC=$(echo "76:67:11:36:64:A2")
+option=$(echo -e "Connect\nDisconnect\nChange profile\nReset pulseaudio"| dmenu -p "Do you wish to connect/disconnect or change soundprofile of your bluetooth device:") 
+#Prereq: trust the MAC address
+#MAC="11:11:22:ED:08:AD"
+MAC="76:67:11:36:64:A2"
 case $option in
     "Connect")
         status=$(systemctl status bluetooth | grep Active | cut -d " " -f 7)
         case $status in
-      	    "active") 
-        	bluetoothctl power on
+      	    "active")
+		    bluetoothctl power on &&
             bluetoothctl connect $MAC && sleep 2 && [ $(bluetoothctl info $MAC|grep "Connected"|awk -F'[:][ ]' '/^[^#]/{print $2}') == "yes" ] && notify-send "Connected" "Bluetooth Device is connected" ||  notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";;
 	    
             "inactive" | "failed")
@@ -14,12 +16,12 @@ case $option in
 	    	#st -e sudo systemctl start bluetooth &&
 		    notify-send "Bluetooth daemon is running"
 		    bluetoothctl power on
-		    bluetoothctl connect $MAC && sleep 1 && [ $(bluetoothctl info $MAC|grep "Connected"|awk -F'[:][ ]' '/^[^#]/{print $2}') == "yes" ] && notify-send "Connected" "Bluetooth Device is disconnected" ||  notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";
+		    bluetoothctl connect $MAC && sleep 1 && [ $(bluetoothctl info $MAC|grep "Connected"|awk -F'[:][ ]' '/^[^#]/{print $2}') == "yes" ] && notify-send "Connected" "Bluetooth Device is connected" ||  notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";
             esac;;     
 
     "Disconnect")
             bluetoothctl power off && sudo -A systemctl stop bluetooth
-            notify-send "Disconnected" "Bluetooth Device is connected" || notify-send "Unable to connect!" "Check whether the bluetooth device is switched on.";;
+            notify-send "Disconnected" "Bluetooth Device is disconnected" || notify-send "Unable to disconnect!" ;;
 
     "Change profile")
         past_profile=$(pactl list | grep "Active Profile" | sed '2p;d' | cut -d ' ' -f 3)
@@ -33,5 +35,8 @@ case $option in
             "handsfree_head_unit(inferior audio output + mic enable)")
                 pactl set-card-profile $cardindex handsfree_head_unit
                 notify-send "Switched card profile from $past_profile to $profile" -i audio-headset;;
-        esac
+            esac;;
+    "Reset pulseaudio")
+        ##check for a2dp sink not found error in status command
+        pulseaudio --kill && pulseaudio --cleanup-shm && pulseaudio --start;;
 esac

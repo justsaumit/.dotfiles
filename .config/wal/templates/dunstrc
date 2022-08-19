@@ -46,7 +46,8 @@
     show_indicators = yes
     icon_position = left
     max_icon_size = 40
-    icon_path = /usr/share/icons/Adwaita/512x512/devices/
+##since dunst runs as root on startup $USER would point to root dir
+    icon_path = /home/saumit/.local/share/icons/
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/dmenu -p dunst:
@@ -77,6 +78,6 @@
 [urgency_critical]
     background = "#900000"
     foreground = "#ffffff"
-    fram_color = "ff0000"
-
+    frame_color = "ff0000"
+    timeout = 100
 # vim:ft=cfg

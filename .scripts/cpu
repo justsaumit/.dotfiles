@@ -1,12 +1,2 @@
 #!/bin/sh
-
-case $BLOCK_BUTTON in
-	1) notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n(100% per core)" ;;
-	2) setsid -f "$TERMINAL" -e htop ;;
-	3) notify-send "🖥 CPU module " "\- Shows CPU temperature.
-- Click to show intensive processes.
-- Middle click to open htop." ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
-esac
-
-sensors | awk '/Core 0/ {print "🌡" $3}'
+cat /proc/stat | grep cpu | head -1 | awk '{print ($5*100)/($2+$3+$4+$5+$6+$7+$8+$9+$10+$11)}'| awk '{printf (" %2.1f%",(100-$1))}'

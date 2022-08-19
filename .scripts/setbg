@@ -17,5 +17,5 @@ xdotool key super+F5
 $HOME/.local/usr/wal-telegram/wal-telegram
 ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
 pkill dunst &&
-dunst
+dunst > /dev/null &
 echo "^_^ Enjoy your new look!!!"
