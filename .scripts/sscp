@@ -2,4 +2,5 @@
 
 latestss=$(ls -t $HOME/pix/Screenshots/ | head -n10 | dmenu -l 10)
 
-xclip -selection clipboard -t image/png -i $HOME/pix/Screenshots/$latestss
+[ -z $latestss ] && echo "Nothing selected...quitting" && exit \
+||  xclip -selection clipboard -t image/png -i $HOME/pix/Screenshots/$latestss

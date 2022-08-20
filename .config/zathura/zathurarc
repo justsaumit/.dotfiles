@@ -13,8 +13,8 @@ map J zoom in
 map K zoom out
 #map u =
 
-map H pg down
-map L pg up
+map H previous
+map L next
 
 map <C-n> search forward
 map <C-b> search backward
