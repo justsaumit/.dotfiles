@@ -5,5 +5,5 @@ pid=$(echo $prok | awk '{print $1}')
 pname=$(echo $prok | awk '{print $4}')
 
 kill -15 $pid 2>/dev/null &&
-[ -n $pname ] && dunstify "Terminated process Successfully" "$pname was killed" -i skull
+[ -n "$pname" ] && dunstify "Terminated process Successfully" "$pname was killed" -i skull
 
