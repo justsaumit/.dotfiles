@@ -4,30 +4,29 @@
 
 # Toggle mute
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
 
 super + F4
-    pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
 
 # Toggle mic mute
-
+#
 #    pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Change volume
 XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {+,-}2% && dunstify "Volume Changed" "Volume set to $(pamixer --get-volume)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
 
-#Toggle play/pause in spotify (universal)
 
+#Toggle play/pause in spotify (universal)
 XF86AudioPlay
     playerctl -p spotify play-pause 
 
 # Change tracks spotify only
-
 XF86Audio{Prev,Next}
     playerctl -p spotify {previous,next} 
 
-# Change spotify volume only
+# Change spotify volume only (universal)
 XF86{HomePage,Mail}
      playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify Volume set to $(printf %.0f%% $(echo $(playerctl -p spotify volume)*100 | bc))" -i spotify -r {1400,1401}
 
