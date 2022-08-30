@@ -5,16 +5,11 @@ set page-padding 1
 
 map j scroll half-down
 map k scroll half-up
-#map D toggle_page_mode
+map J zoom out
+map K zoom in
+
 map r reload
 map R rotate
-
-map J zoom in
-map K zoom out
-#map u =
-
-map H previous
-map L next
 
 map <C-n> search forward
 map <C-b> search backward

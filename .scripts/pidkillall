@@ -1,7 +1,7 @@
 #!/bin/sh
 
 psout=$(ps -u $USER -o pid,%cpu,%mem,comm | sed -n '1!p' | sort -b -k2 -r| cut --characters=1-18 --complement | awk '!x[$0]++'| dmenu -i -l 15  )
-//uniq without piping into sort before with the help of awk
+##uniq without piping into sort before with the help of awk
 
 killall $psout 2>/dev/null &&
 [ -n "$psout" ] && dunstify "Terminated all processes Successfully" "$psout was killed" -i skull
