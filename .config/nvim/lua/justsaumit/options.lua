@@ -27,7 +27,7 @@ local options = {
     --undo/backup
     backup=false,
     swapfile=false,
-    undodir=os.getenv("HOME") .. "/.config/nvim/undodir",
+    undodir=os.getenv("HOME") .. "/.local/state/nvim/undodir",
     undofile=true
 }
 --forloop for table 'options'
@@ -36,4 +36,4 @@ for key, value in pairs(options)  do
 end
 
 --to 'cw/'dw' a word containing '-' in between
---vim.cmd [[set iskeyword+=-]]
+vim.cmd [[set iskeyword+=-]]

@@ -1,3 +1,6 @@
 require("justsaumit.options")
 require("justsaumit.keymaps")
+require("justsaumit.plugins")
+require("justsaumit.colorscheme")
+require("justsaumit.treesitter-config")
 print ("while ( !(success = try() );")
