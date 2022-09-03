@@ -36,4 +36,4 @@ for key, value in pairs(options)  do
 end
 
 --to 'cw/'dw' a word containing '-' in between
-vim.cmd [[set iskeyword+=-]]
+--vim.cmd [[set iskeyword+=-]]

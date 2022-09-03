@@ -1,1 +1,3 @@
-print ('while ( !(success = try() );')
+require("justsaumit.options")
+require("justsaumit.keymaps")
+print ("while ( !(success = try() );")
