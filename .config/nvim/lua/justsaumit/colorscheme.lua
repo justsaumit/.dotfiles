@@ -1,14 +1,3 @@
---protected call
-local colorscheme = "tokyonight"
-local pywal = require('pywal')
-
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-    vim.notify("colorscheme " .. colorscheme .. " not found! :(")
-    pywal.setup()
-    return
-end
-
 --configuration needs to be set BEFORE loading the color scheme with colorscheme tokyonight
 vim.g.tokyonight_style = "night"
 tokyonight_terminal_colors=true
@@ -24,3 +13,14 @@ tokyonight_dark_sidebar=true
 tokyonight_dark_float=true
 tokyonight_colors={}
 tokyonight_lualine_bold=false
+
+--protected call
+local colorscheme = "tokyonight"
+local pywal = require('pywal')
+
+local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+if not status_ok then
+    vim.notify("colorscheme " .. colorscheme .. " not found! :(")
+    pywal.setup()
+    return
+end
