@@ -16,6 +16,9 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+--Save file with Ctrl+S
+keymap("n", "<C-s>", ":w<CR>", opts)
+
 -- Better window navigation for split
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
