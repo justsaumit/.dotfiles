@@ -13,7 +13,6 @@ alias \
 	r='ranger' \
 	sr='sudo ranger' \
 	ncmpcpp='ncmpcpp -b .config/ncmpcpp/keybindings' \
-	sp='spotify' \
 	jds='export _JAVA_AWT_WM_NONREPARENTING=1' \
 	jd='jdownloader' \
 	yt='ytfzf -t' \

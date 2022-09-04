@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/saumit/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["nvim-lastplace"] = {
+    loaded = true,
+    path = "/home/saumit/.local/share/nvim/site/pack/packer/start/nvim-lastplace",
+    url = "https://github.com/ethanholz/nvim-lastplace"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/saumit/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
