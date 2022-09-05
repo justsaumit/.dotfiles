@@ -2,7 +2,7 @@ local options = {
     number=true,			-- Shows absolute linenumber
     relativenumber=true,		-- Shows linenumber relative to cursor
     					--combination of both^ for hybrid linenumber
-    textwidth=100,
+--    textwidth=100,
     numberwidth=4,
     scrolloff=8,			-- keeps cursor in middle of screen/scrolls 8lines in advance
     sidescroll=18,

@@ -50,6 +50,7 @@ return packer.startup(function(use)
     use {'nvim-treesitter/nvim-treesitter',run = ':TSUpdate'}
 --ColorSchemes
     use "folke/tokyonight.nvim"
+    use "tiagovla/tokyodark.nvim"
     use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
 --Web-devicons
     use "kyazdani42/nvim-web-devicons"
@@ -57,6 +58,20 @@ return packer.startup(function(use)
     use {'nvim-lualine/lualine.nvim',requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
 --Bufferline
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+--HTML
+    use 'windwp/nvim-ts-autotag'
+--cmp
+--  use 'neovim/nvim-lspconfig'
+--  use 'hrsh7th/cmp-nvim-lsp'
+--  use 'hrsh7th/cmp-buffer'
+--  use 'hrsh7th/cmp-path'
+--  use 'hrsh7th/cmp-cmdline'
+--  use 'hrsh7th/nvim-cmp'
+
+--Autopairs for HTML
+   --use {"windwp/nvim-autopairs", wants = "nvim-treesitter", module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" }, config = function()
+    --require("config.autopairs").setup() end,}
+
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
