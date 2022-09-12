@@ -1,64 +1,33 @@
-##Variables
-#maxvol=$(pactl list sinks | grep '^[[:space:]]Volume:' | \
-#    head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
-
-
 #########
 # Media #
 #########
 
 # Toggle mute
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle &&  [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
 
 super + F4
-    pactl set-sink-mute @DEFAULT_SINK@ toggle &&  [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
 
 # Toggle mic mute
 #    pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Change volume
 XF86Audio{Raise,Lower}Volume
-   pactl set-sink-volume @DEFAULT_SINK@ {+,-}2% && dunstify "Volume Changed" "Volume set to $(pamixer --get-volume)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
-
-# Change volume
-#super + {k,j}
-#    pactl set-sink-volume @DEFAULT_SINK@ {+,-}2%
-
-# Change volume, chunky
-#super + shift + {k,j}
-#    pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%
+    pactl set-sink-volume @DEFAULT_SINK@ {+,-}2% && dunstify "Volume Changed" "Volume set to $(pamixer --get-volume)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
 
 
 #Toggle play/pause in spotify (universal)
-
 XF86AudioPlay
     playerctl -p spotify play-pause 
 
 # Change tracks spotify only
-
 XF86Audio{Prev,Next}
     playerctl -p spotify {previous,next} 
 
 # Change spotify volume only
 XF86{HomePage,Mail}
-     playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify Volume set to $(printf %.0f%% $(echo $(playerctl -p spotify volume)*100 | bc))" -i spotify -r {1400,1401}
-#    playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume set to $(echo $(playerctl -p spotify volume)*100 | bc | sed 's/\..*/%/')" -i spotify -r {1400,1401}
-
-#    playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume set to $(playerctl -p spotify volume)"  -i spotify -t 1500 -r 2300
-#    playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume changed to $(awk -vn=$(playerctl -p spotify volume) 'BEGIN{printf('%.0f%',n*100)}')" -i spotify -t 1500 -r 2300
-#playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify volume changed to $(echo $(playerctl -p spotify volume)*100 | bc | sed 's/\..*/%/')" -i spotify
-#dunstify "Volume Changed" "Spotify volume changed to $(echo $(playerctl -p spotify volume)*100 | bc |  sed 's/\..*/%/')"
-
-
- 
-#
-#super + ;
-#dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-
-#super + {F3,F5}
-#spotifyvol{inc,dec}.py
-
+    playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify Volume set to $(printf %.0f%% $(echo $(playerctl -p spotify volume)*100 | bc))" -i spotify -r {1400,1401}
 
 ################
 # Applications #
@@ -75,13 +44,13 @@ super + alt + q
 ##(Temp Launch)
 # Launch ranger
 super + r
-   exec $TERMINAL ranger
+    exec $TERMINAL ranger
 # Launch pulsemixer
 super + p
-   exec $TERMINAL pulsemixer
+    exec $TERMINAL pulsemixer
 #Launch <go,h,bash>top
 super + shift {g,h,b}
-   exec $TERMINAL {go,h,bash}top
+    exec $TERMINAL {go,h,bash}top
 
 #Launch galculator - a GTK 2/3 based scientific calculator
 XF86Calculator
@@ -90,37 +59,37 @@ XF86Calculator
 ##(Perma Launch)
 # Launch wa
 super + shift + w
-   whatsapp-nativefier
+    whatsapp-nativefier
 
 # Launch ncloud
 super + shift + n
-   qutebrowser https://ncloud.draconyan.xyz
+    qutebrowser https://ncloud.draconyan.xyz
 
 # Launch outlook
 super + shift + e
-   qutebrowser https://outlook.office365.com/mail/inbox
+    qutebrowser https://outlook.office365.com/mail/inbox
 super + ctrl + e
-   qutebrowser https://gmail.com
+    qutebrowser https://gmail.com
 
 # Launch teams
 super + shift + t
-   qutebrowser https://teams.microsoft.com
+    qutebrowser https://teams.microsoft.com
 	
 # Launch spotify 
 super + shift + m
-   sp
+    sp
 
 # Launch discord
 super + shift + d
-	discord
+    discord
 
 # Launch telegram
 super + ctrl + t
-	telegram-desktop
+    telegram-desktop
 
 # dmenu custom run
 super + d
-	dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,element-desktop,librewolf,passmenu,picomm,pidkill,setbg,st,telegram-desktop,tempclip,todo,tolearn,trashy,ungoogled-chromium,xkill
+    dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,element-desktop,librewolf,passmenu,picomm,pidkill,setbg,st,telegram-desktop,tempclip,todo,tolearn,trashy,ungoogled-chromium,xkill
 
 #dmenu pidkill
 super + F1
@@ -140,15 +109,15 @@ super + F3
 
 # dmenu wifi-menu
 super + ctrl + w
-	wifi-menu
+      wifi-menu
 
 # dmenu vpn-menu
 super + ctrl + v
-	vpn-menu
+      vpn-menu
 
 # xkill
 super + alt + w
-	xkill
+      xkill
 
 ##screenlock
 #loads cached lockscreen (instant)
@@ -156,26 +125,25 @@ super + shift+ l
 	betterlockscreen --lock dimblur
 #generates a new lockscreen (takes time)
 super + ctrl + l
-    betterlockscreen -u pix/Wallpaper/betterlockscreen/ --lock dimblur
+        betterlockscreen -u pix/Wallpaper/betterlockscreen/ --lock dimblur
 
 # Change screen brightness
 XF86MonBrightness{Up,Down}
     brillo -s intel_backlight  -{A,U} 5  && dunstify -u normal -t 3000 -r 90210 -i brightness "$(printf %.0f%% $( brillo -G) )"
 
-
 # Change screen temp
 
 # Take a screenshot (full)
 Print
-	maim | tee ~/pix/Screenshots/pic-full-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+    maim | tee ~/pix/Screenshots/pic-full-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
 # Take a screenshot (sel)
 alt + Print
 ##    maim --window $(xdotool getactivewindow) | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -sel c -t image/png
-	maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+    maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
 ctrl + Print
-	flameshot gui
+    flameshot gui
 
 ##############################
 #d-menu binary Yes/No Prompts#
@@ -192,3 +160,4 @@ super + shift + x
     prompt "Do you want to shutdown?" 'shutdown now'
 alt + shift + x
     prompt "Do you want to reboot?" 'reboot'
+
