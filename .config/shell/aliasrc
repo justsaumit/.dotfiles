@@ -28,7 +28,7 @@ alias \
 #awk '{print "$2"}'
 #cut -d\ -f4
 alias \
-	g1='git add "$(git status | grep modified: | cut -d'\'' '\'' -f4 | fzf)"' \
+	g1='git add "$(git status -s | fzf | cut -b 1-3 --complement)"' \
         gr='git restore --staged' \
 	g2='git commit -S -m' \
 	g3='git push "$(git remote show | fzf)" HEAD' \
