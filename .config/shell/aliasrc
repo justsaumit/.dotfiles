@@ -24,10 +24,12 @@ alias \
 #git
 alias \
 	g1='git add .' \
+        gr='git restore --staged' \
 	g2='git commit -S -m' \
 	g3='git push origin HEAD --force' \
 	gs='git status' \
 	gd='git diff --staged' \
+        gu='git remote update && git status -uno' \
 	glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 #useful command line substitutions
