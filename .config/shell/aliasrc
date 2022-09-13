@@ -22,11 +22,16 @@ alias \
 	polkit='/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
 
 #git
+#to escape single quotes -> replace ' with '\''
+#The following wont work:
+#cut -d ' ' -f4
+#awk '{print "$2"}'
+#cut -d\ -f4
 alias \
-	g1='git add .' \
+	g1='git add "$(git status | grep modified: | cut -d'\'' '\'' -f4 | fzf)"' \
         gr='git restore --staged' \
 	g2='git commit -S -m' \
-	g3='git push origin HEAD --force' \
+	g3='git push "$(git remote show | fzf)" HEAD' \
 	gs='git status' \
 	gd='git diff --staged' \
         gu='git remote update && git status -uno' \
