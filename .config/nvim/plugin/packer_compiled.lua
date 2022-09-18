@@ -138,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/saumit/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/home/saumit/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
