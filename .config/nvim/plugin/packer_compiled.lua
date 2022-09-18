@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/saumit/.local/share/nvim/site/pack/packer/start/nvim-lastplace",
     url = "https://github.com/ethanholz/nvim-lastplace"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/saumit/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/saumit/.local/share/nvim/site/pack/packer/start/nvim-treesitter",

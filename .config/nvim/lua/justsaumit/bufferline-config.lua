@@ -60,6 +60,10 @@ for i = 1, 9 do
   end, opts)
 end
 
+--Ctrl+W to close a buffer
+keymap("n", "W", ":bdelete!<CR>", opts)
+
+
 --Tab or Ctrl+Tab for Forward Cycle  //terminals don't see a difference between <Tab> and <C-Tab>
 --Shift+Tab for Backward Cycle
 keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", opts)

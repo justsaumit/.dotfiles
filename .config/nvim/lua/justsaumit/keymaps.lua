@@ -18,6 +18,8 @@ vim.g.maplocalleader = " "
 -- Normal --
 --Save file with Ctrl+S
 keymap("n", "<C-s>", ":w<CR>", opts)
+--Toggle nvim-tree
+keymap("n", "<m-e>", ":NvimTreeToggle<CR>", opts)
 
 -- Better window navigation for split
 keymap("n", "<C-h>", "<C-w>h", opts)
