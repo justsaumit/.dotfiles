@@ -61,9 +61,11 @@ return packer.startup(function(use)
 --Nvim-tree File explorer for nvim
     use {'kyazdani42/nvim-tree.lua',  requires = { 'kyazdani42/nvim-web-devicons'}}
 --Whick-key - displays a popup with possible key bindings
-    use {'folke/which-key.nvim'}
+    use 'folke/which-key.nvim'
 --HTML
     use 'windwp/nvim-ts-autotag'
+--Telescope
+use {'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { {'nvim-lua/plenary.nvim'} }}
 --cmp
 --  use 'neovim/nvim-lspconfig'
 --  use 'hrsh7th/cmp-nvim-lsp'
