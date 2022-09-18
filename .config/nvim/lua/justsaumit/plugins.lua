@@ -59,7 +59,7 @@ return packer.startup(function(use)
 --Bufferline
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 --Nvim-tree File explorer for nvim
-    use {'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons'}}
+    use {'kyazdani42/nvim-tree.lua',  requires = { 'kyazdani42/nvim-web-devicons'}}
 --HTML
     use 'windwp/nvim-ts-autotag'
 --cmp
