@@ -8,6 +8,17 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+---Autocompile and Execute
+--ANSI C
+vim.cmd([[autocmd BufEnter *.c map <F4> :w <CR> :!gcc % -ansi -o %< && ./%< <CR>]])
+--C99
+vim.cmd([[autocmd BufEnter *.c map <F5> :w <CR> :!gcc -std=c99 % -o %< && ./%< <CR>]])
+--C
+vim.cmd([[autocmd BufEnter *.c map <F6> :w <CR> :!gcc % -o %< && ./%< <CR>]])
+
+--C++
+vim.cmd([[autocmd BufEnter *.cpp map <F4> :w <CR> :!g++ % -o %< && ./%< <CR>]])
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -16,6 +27,8 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+--
+--
 --Save file with Ctrl+S
 keymap("n", "<C-s>", ":w<CR>", opts)
 --Toggle nvim-tree
@@ -57,3 +70,4 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
