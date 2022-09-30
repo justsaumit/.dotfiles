@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "%b" "import psutil\nprint('{}%'.format(psutil.cpu_percent(interval=2)))" | python3 | awk '{printf (" %2.1f%",($1))}'

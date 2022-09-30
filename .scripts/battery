@@ -13,10 +13,10 @@ for battery in /sys/class/power_supply/BAT?*; do
         if [ "$capacity" -ge 75 ] && [ "$capacity" -le 100 ]
         then
             capacity_lvl="  "
-        elif [ 51<="$capacity" && "$capacity"<=75 ]
+        elif [ "$capacity" -ge 51 ] && [ "$capacity" -le 75 ]
         then
             capacity_lvl="  "
-        elif [ 25<="$capacity" && "$capacity"<=50 ]
+        elif [ "$capacity" -ge 25 ] && [ "$capacity" -le 50 ]
         then
             capacity_lvl="  "
         else
@@ -25,10 +25,10 @@ for battery in /sys/class/power_supply/BAT?*; do
 
         # Sets up the status and capacity
 	case "$(cat "$battery/status" 2>&1)" in
-		"Full") status="⚡" ;;
+		"Full") status="" ;;
 #		"Discharging") status="$capacity-level" ;;
 		"Discharging") status="$capacity_lvl" ;;
-		"Charging") status="🔌" ;;
+		"Charging") status=" " ;;
 		"Not charging") status="🛑" ;;
 		"Unknown") status="🟢" ;;
 		*) exit 1 ;;
