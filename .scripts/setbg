@@ -1,8 +1,9 @@
 #!/bin/sh
 
+walldir="$HOME/pix/Wallpaper/w/wow"
 if [ -z "$1" ]; then
     echo "Chosing a random wallpaper..."
-    wall=$(find $HOME/pix/Wallpaper/w/wow -type f | shuf -n 1)
+    wall=$(find $walldir -type f | shuf -n 1)
     echo "Setting up the wallpaper: $(echo $wall|cut -d '/' -f 8)" 
 else
     wall="$1"    
@@ -14,8 +15,8 @@ echo "Generating pywal color schemes..."
 wal -n -i $wall >/dev/null &&
 echo "dwm reading Xresources color values at runtime"
 xdotool key super+F5
-$HOME/.local/usr/wal-telegram/wal-telegram
+$HOME/.local/usr/wal-telegram/wal-telegram -r 2> /dev/null &
 ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
 pkill dunst &&
-dunst > /dev/null &
+dunst 2> /dev/null &
 echo "^_^ Enjoy your new look!!!"
