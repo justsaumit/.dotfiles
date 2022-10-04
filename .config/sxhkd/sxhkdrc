@@ -4,14 +4,15 @@
 
 # Toggle mute
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle &&  [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && [[ "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep MUTE)" ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
 
 super + F4
-    pactl set-sink-mute @DEFAULT_SINK@ toggle &&  [[ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes"  ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && [[ "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep MUTE)" ]] && dunstify "Mute" "Volume set to 0%"  -i volume-xmark -t 1000 -r 1234
 
 # Toggle mic mute
 #    pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+##Not able to set wpctl here temporarily fix in future
 # Change volume
 XF86Audio{Raise,Lower}Volume
    pactl set-sink-volume @DEFAULT_SINK@ {+,-}2% && dunstify "Volume Changed" "Volume set to $(pamixer --get-volume)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
@@ -24,10 +25,6 @@ XF86AudioPlay
 XF86Audio{Prev,Next}
     playerctl -p spotify {previous,next} 
 
-# Change spotify volume only
-XF86{HomePage,Mail}
-     playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify Volume set to $(printf %.0f%% $(echo $(playerctl -p spotify volume)*100 | bc))" -i spotify -r {1400,1401}
- 
 ################
 # Applications #
 ################
@@ -43,13 +40,13 @@ super + alt + q
 ##(Temp Launch)
 # Launch ranger
 super + r
-    exec $TERMINAL ranger
+   exec $TERMINAL ranger
 # Launch pulsemixer
 super + p
-    exec $TERMINAL pulsemixer
+   exec $TERMINAL pulsemixer
 #Launch <go,h,bash>top
 super + shift {g,h,b}
-    exec $TERMINAL {go,h,bash}top
+   exec $TERMINAL {go,h,bash}top
 
 #Launch galculator - a GTK 2/3 based scientific calculator
 XF86Calculator
@@ -58,33 +55,33 @@ XF86Calculator
 ##(Perma Launch)
 # Launch wa
 super + shift + w
-    whatsapp-nativefier
+   whatsapp-nativefier
 
 # Launch ncloud
 super + shift + n
-    qutebrowser https://ncloud.draconyan.xyz
+   qutebrowser https://ncloud.draconyan.xyz
 
 # Launch outlook
 super + shift + e
-    qutebrowser https://outlook.office365.com/mail/inbox
+   qutebrowser https://outlook.office365.com/mail/inbox
 # Launch gmail
 super + ctrl + e
-    qutebrowser https://gmail.com
+   qutebrowser https://gmail.com
 # Launch gmail
 super + ctrl + e
-    qutebrowser https://mail.proton.me/u/0/inbox
+   qutebrowser https://mail.proton.me/u/0/inbox
 
 # Launch teams
 super + shift + t
-    qutebrowser https://teams.microsoft.com
+   qutebrowser https://teams.microsoft.com
 	
 # Launch spotify 
 super + shift + m
-    sp
+   sp
 
 # Launch discord
 super + shift + d
-        discord
+	discord
 
 # Launch telegram
 super + ctrl + t
@@ -92,7 +89,7 @@ super + ctrl + t
 
 # dmenu custom run
 super + d
-        dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,element-desktop,kbesccapes,librewolf,passmenu,picomm,pidkill,setbg,st,telegram-desktop,tempclip,todo,tolearn,trashy,ungoogled-chromium,xkill
+	dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,element-desktop,kbesccapes,librewolf,passmenu,picomm,pidkill,setbg,st,telegram-desktop,tempclip,todo,tolearn,trashy,ungoogled-chromium,xkill
 
 #dmenu pidkill
 super + F1
@@ -112,20 +109,20 @@ super + F3
 
 # dmenu wifi-menu
 super + ctrl + w
-      wifi-menu
+	wifi-menu
 
 # dmenu vpn-menu
 super + ctrl + v
-      vpn-menu
+	vpn-menu
 
 # xkill
 super + alt + w
-      xkill
+	xkill
 
 ##screenlock
 #loads cached lockscreen (instant)
 super + shift+ l
-    betterlockscreen --lock dimblur
+	betterlockscreen --lock dimblur
 #generates a new lockscreen (takes time)
 super + ctrl + l
     betterlockscreen -u pix/Wallpaper/betterlockscreen/ --lock dimblur
@@ -139,15 +136,15 @@ XF86MonBrightness{Up,Down}
 
 # Take a screenshot (full)
 Print
-    maim | tee ~/pix/Screenshots/pic-full-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+	maim | tee ~/pix/Screenshots/pic-full-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
 # Take a screenshot (sel)
 alt + Print
 ##    maim --window $(xdotool getactivewindow) | tee ~/Pictures/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -sel c -t image/png
-    maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
+	maim -D -u --select | tee ~/pix/Screenshots/pic-sel-$(date '+%y-%m-%d--%H-%M-%S').png | xclip -selection clipboard -t image/png
 
 ctrl + Print
-    flameshot gui
+	flameshot gui
 
 ##############################
 #d-menu binary Yes/No Prompts#
