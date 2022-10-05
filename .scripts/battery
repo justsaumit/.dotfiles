@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Prints all batteries, their percentage remaining and an emoji corresponding
-# to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
+# to charge status (  for plugged up, "$capacity_lvl" for discharging on battery, etc.).
 # Loop through all attached batteries and format the info
 for battery in /sys/class/power_supply/BAT?*; do
 	# If non-first battery, print a space separator.
@@ -26,17 +26,16 @@ for battery in /sys/class/power_supply/BAT?*; do
         # Sets up the status and capacity
 	case "$(cat "$battery/status" 2>&1)" in
 		"Full") status="" ;;
-#		"Discharging") status="$capacity-level" ;;
 		"Discharging") status="$capacity_lvl" ;;
 		"Charging") status=" " ;;
-		"Not charging") status="🛑" ;;
-		"Unknown") status="🟢" ;;
+		"Not charging") status=" " ;;
+		"Unknown") status="" ;;
 		*) exit 1 ;;
 	esac
 	# Will make a warn variable if discharging and low
-	[ "$status" = "🔋" ] && [ "$capacity" -le 25 ] && warn="❗" && dunstify "Critical Battery" "Charge Immediately" -u critical -i battery-quarter
+	[ "$(cat "$battery/status" 2>&1)" = "Discharging" ] && [ "$capacity" -le 25 ] && warn="❗" && dunstify "Critical Battery" "Charge Immediately" -u critical -i battery-quarter
         #parse json file in future and close the persistent Critical Battery notification
-        [ "$status" = "🔌" ] && [ "$capacity" -le 25 ] && [ "$warn" = "❗" ] && [ $(dunsctl count displayed) == 1 ] && dunstctl close
+        [ "$status" = " " ] && [ "$capacity" -le 25 ] && [ $(dunstctl count displayed) == 1 ] && dunstctl close
 	# Prints the info
 	printf "%s%s%d%%" "$status" "$warn" "$capacity"; unset warn
 done && printf "\\n"
