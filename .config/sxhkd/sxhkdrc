@@ -25,6 +25,11 @@ XF86AudioPlay
 XF86Audio{Prev,Next}
     playerctl -p spotify {previous,next} 
 
+# Change spotify volume only
+XF86{HomePage,Mail}
+     playerctl -p spotify volume 0.05{+,-} && dunstify "Volume Changed" "Spotify Volume set to $(printf %.0f%% $(echo $(playerctl -p spotify volume)*100 | bc))" -i spotify -r {1400,1401}
+
+
 ################
 # Applications #
 ################
@@ -66,9 +71,9 @@ super + shift + e
    qutebrowser https://outlook.office365.com/mail/inbox
 # Launch gmail
 super + ctrl + e
-   qutebrowser https://gmail.com
-# Launch gmail
-super + ctrl + e
+   qutebrowser https://mail.google.com
+# Launch protonmail 
+super + alt + e
    qutebrowser https://mail.proton.me/u/0/inbox
 
 # Launch teams
