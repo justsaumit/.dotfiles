@@ -15,7 +15,7 @@ super + F4
 ##Not able to set wpctl here temporarily fix in future
 # Change volume
 XF86Audio{Raise,Lower}Volume
-   pactl set-sink-volume @DEFAULT_SINK@ {+,-}2% && dunstify "Volume Changed" "Volume set to $(pamixer --get-volume)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
+   volumechanger {up,down} && dunstify "Volume Changed" "Volume set to $(volumecurr)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
 
 #Toggle play/pause in spotify (universal)
 XF86AudioPlay
@@ -76,6 +76,10 @@ super + ctrl + e
 super + alt + e
    qutebrowser https://mail.proton.me/u/0/inbox
 
+# Launch twitter
+super + alt + t
+   qutebrowser https://twitter.com
+	
 # Launch teams
 super + shift + t
    qutebrowser https://teams.microsoft.com

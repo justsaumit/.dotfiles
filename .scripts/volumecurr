@@ -1,0 +1,10 @@
+#!/bin/sh
+
+volume="$(wpctl get-volume @DEFAULT_SINK@)"
+volume=${volume#Volume: *}
+
+case "$volume" 
+    in (*MUTED*) volume=0;; 
+esac 
+
+printf "%0.0f%%\n" "${volume%% *}e+2"
