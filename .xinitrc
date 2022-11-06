@@ -3,9 +3,8 @@
 dunst &
 sxhkd &
 setbg &
-nm-applet &
 unclutter &
-picom --experimental-backends &
+picom &
 setxkbmap -option caps:escape &
 dwmblocks &
 exec dwm

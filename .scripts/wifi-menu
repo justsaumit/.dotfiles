@@ -5,7 +5,15 @@ choice=$(echo -e "up\ndown\nconnect" | dmenu -p "Do you wish to connect to a wi-
 case $choice in
     "up"|"down")
         ssid=$(nmcli -t -f ssid dev wifi| cut -d\' -f2 | dmenu -p "Select Wifi  " -l 20)
-        nmcli c "$choice" "$ssid" ;;
+        nmcli c "$choice" "$ssid";
+        if [ "$choice" == "up" ]; then
+            dunstify "Connected" "You are now connected to $ssid" -i wifi-solid
+        elif [ "$choice" == "down" ]; then
+            dunstify "Disconnected" "You have disconnected from $ssid"-i wifi-slash
+        else
+            :
+        fi;;
+
     "connect")
         bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -p "Select Wi-Fi  :" -l 20 | cut -d' ' -f1)
         pass=$(echo "" | dmenu -P -p "Enter Password  : ") 
