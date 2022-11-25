@@ -7,6 +7,10 @@ map j scroll half-down
 map k scroll half-up
 map J zoom out
 map K zoom in
+map - zoom out
+map = zoom in
+map _ adjust_window best-fit
+map + adjust_window width
 
 map r reload
 map R rotate
