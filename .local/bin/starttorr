@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo -A systemctl start jackett
+sudo -A systemctl start flaresolverr                
