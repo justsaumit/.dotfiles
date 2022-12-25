@@ -98,7 +98,7 @@ super + ctrl + t
 
 # dmenu custom run
 super + d
-	dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,element-desktop,kbesccapes,librewolf,passmenu,picomm,pidkill,setbg,st,telegram-desktop,tempclip,todo,tolearn,trashy,ungoogled-chromium,xkill
+	dmenu_run -hp 4chgetw,bts,dcalc,dmount,dumount,element-desktop,firefox,kbesccapes,librewolf,passmenu,picomm,pidkill,setbg,st,telegram-desktop,tempclip,todo,tolearn,trashy,ungoogled-chromium,virt-manager,xkill
 
 #dmenu pidkill
 super + F1
