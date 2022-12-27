@@ -3,16 +3,16 @@
 walldir="$HOME/pix/Wallpaper/w/wow"
 if [ -z "$1" ]; then
     echo "Chosing a random wallpaper..."
-    wall=$(find $walldir -type f | shuf -n 1)
-    echo "Setting up the wallpaper: $(echo $wall|cut -d '/' -f 8)" 
+    wall=$(find "$walldir" -type f | shuf -n 1)
+    echo "Setting up the wallpaper: $(echo "$wall" |cut -d '/' -f 8)"
 else
-    wall="$1"    
+    wall="$1"
 fi
 
-echo "Setting up the wallpaper: $(echo $wall)" 
-xwallpaper --zoom $wall &&
+echo "Setting up the wallpaper: $wall"
+xwallpaper --zoom "$wall" &&
 echo "Generating pywal color schemes..."
-wal -n -i $wall >/dev/null &&
+wal -n -i "$wall" >/dev/null &&
 echo "dwm reading Xresources color values at runtime"
 xdotool key super+F5
  [[ $(ps -u $USER -o comm | grep "telegram") = "telegram-deskto" ]] && r="-r"
