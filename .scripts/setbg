@@ -15,9 +15,8 @@ echo "Generating pywal color schemes..."
 wal -n -i "$wall" >/dev/null &&
 echo "dwm reading Xresources color values at runtime"
 xdotool key super+F5
-[ -n $(pgrep "telegram") ] && r="-r"
+[ -n "$(pgrep "telegram")" ] && r="-r" 
 $HOME/.local/usr/wal-telegram/wal-telegram "$r" 2> /dev/null
 ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
-pkill dunst &&
-dunst 2> /dev/null &
+pkill dunst && dunst 2> /dev/null &
 echo "^_^ Enjoy your new look!!!"
