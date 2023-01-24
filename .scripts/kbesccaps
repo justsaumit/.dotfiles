@@ -4,7 +4,8 @@
 ##whenever I plug in any of my keyboard (wired or wireless)
 
 #PreRequisite lsusb/usbutils
-[ -z "$(command -v lsusb)" ] && echo "Install usbutils" && exit
+#[ -z "$(command -v lsusb)" ] && echo "Install usbutils" && exit
+#[ -n "$(lsusb | grep -e 04f3:152e -e 25a7:fa67)" ] && setxkbmap -option caps:escape || exit
 
 #for cronjob
 export DISPLAY=:0  
@@ -12,7 +13,3 @@ export DISPLAY=:0
 #If setxkbmap query string is of zero length 
 #then setxkbmap set caps lock as esc key 
 [[ -z "$(setxkbmap -query | grep "caps:escape")" ]] && setxkbmap -option caps:escape
-
-#[ -n "$(lsusb | grep -e 04f3:152e -e 25a7:fa67)" ] && setxkbmap -option caps:escape || exit
-
-

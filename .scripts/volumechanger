@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $1 = up ]; then
-    wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+   ##increase by 2%
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && dunstify "Volume Changed" "Volume set to $(volumecurr)"  -i volume-high -t 1500 -r 1235  ##increase by 2%
 elif [ $1 = down ];then
-    wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-   ##decrease by 2%
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && dunstify "Volume Changed" "Volume set to $(volumecurr)"  -i volume-low -t 1500 -r 1236 ##decrease by 2%
 fi

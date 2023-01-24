@@ -15,7 +15,7 @@ super + F4
 ##Not able to set wpctl here temporarily fix in future
 # Change volume
 XF86Audio{Raise,Lower}Volume
-   volumechanger {up,down} && dunstify "Volume Changed" "Volume set to $(volumecurr)"  -i {volume-high,volume-low} -t 1500 -r {1235,1236}
+   volumechanger {up,down}
 
 #Toggle play/pause in spotify (universal)
 XF86AudioPlay
@@ -52,7 +52,9 @@ super + p
 #Launch <go,h,bash>top
 super + shift {g,h,b}
    exec $TERMINAL {go,h,bash}top
-
+#Launch to-do-list
+super + shift + d
+   exec $TERMINAL dooit
 #Launch galculator - a GTK 2/3 based scientific calculator
 XF86Calculator
     exec $TERMINAL -c "stfloat" -e galculator
