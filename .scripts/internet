@@ -13,7 +13,7 @@
 
 if grep -xq 'up' /sys/class/net/w*/operstate 2>/dev/null ; then
 	#wifiicon="$(awk '/^\s*w/ { print " ", int($3 * 100 / 70) "% " }' /proc/net/wireless)"
-	wifiicon=" "
+	ping -c1 example.com &>/dev/null && wifiicon=" " || wifiicon="轢 "
 elif grep -xq 'down' /sys/class/net/w*/operstate 2>/dev/null ; then
 	grep -xq '0x1003' /sys/class/net/w*/flags && wifiicon="睊 " || wifiicon="轢 "
 fi
